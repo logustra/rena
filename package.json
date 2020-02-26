@@ -1,7 +1,22 @@
 {
   "name": "rena",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
+  "description": "a Blog build with React Native, Typescript, Atomic Design & DDD",
+  "keywords": [
+    "react-native",
+    "typescript",
+    "atomic-design",
+    "ddd",
+    "atomic-design-example",
+    "ddd-example"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/logustra/rena"
+  },
+  "bugs": "https://github.com/logustra/rena/issues",
+  "author": "Faizal Andyka Putra",
+  "license": "MIT",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
