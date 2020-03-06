@@ -10,7 +10,7 @@ function Home ({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home</Text>
-      <Button
+      <Button 
         title="Go to Blog"
         onPress={() => navigation.navigate('Blog')}
       />
@@ -30,12 +30,28 @@ function Blog ({ navigation }) {
   )
 }
 
+const routes = [
+  {
+    name: 'Home',
+    component: Home
+  },
+  {
+    name: 'Blog',
+    component: Blog
+  }
+]
+
 export default function App () {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Blog" component={Blog} />
+        {routes.map((item: any, index: number) => (
+          <Stack.Screen 
+            key={`route-${index}`}
+            name={item.name} 
+            component={item.component} 
+          />
+        ))}        
       </Stack.Navigator>
     </NavigationContainer>
   )
