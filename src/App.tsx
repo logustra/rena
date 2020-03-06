@@ -3,20 +3,9 @@ import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import postRoutes from '@@/Post/router'
 
 const Stack = createStackNavigator()
-
-function Home ({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home</Text>
-      <Button 
-        title="Go to Blog"
-        onPress={() => navigation.navigate('Blog')}
-      />
-    </View>
-  )
-}
 
 function Blog ({ navigation }) {
   return (
@@ -24,17 +13,15 @@ function Blog ({ navigation }) {
       <Text>Blog</Text>
       <Button 
         title="Go to Home"
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.push('post.index')}
       />
     </View>
   )
 }
 
 const routes = [
-  {
-    name: 'Home',
-    component: Home
-  },
+  ...postRoutes,
+
   {
     name: 'Blog',
     component: Blog
@@ -44,7 +31,7 @@ const routes = [
 export default function App () {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Blog">
         {routes.map((item: any, index: number) => (
           <Stack.Screen 
             key={`route-${index}`}
