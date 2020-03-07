@@ -4,6 +4,9 @@ import PostIndex from './views/postIndex'
 export default [
   {
     name: 'post.index',
-    component: PostIndex
+    component: PostIndex,
+    options: {
+      title: 'Posts'
+    }
   }
 ]
