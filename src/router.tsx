@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { RoutesModel } from '@/contracts/routerContracts'
+
 import postRoutes from '@@/Post/router'
 
 const Stack = createStackNavigator()

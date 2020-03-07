@@ -21,6 +21,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "link": "react-native link",
     "lint": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx, src",
     "lint:fix": "eslint -c .eslintrc.js --fix --ext .js,.jsx,.ts,.tsx, src"
   },
