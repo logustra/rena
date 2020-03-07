@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import { RoutesModel } from '@/contracts/routerContracts'
@@ -12,7 +13,7 @@ const routes = [
 
 export default function Router () {
   return (
-    <React.Fragment>
+    <React.Suspense fallback={<View />}>
       <Stack.Navigator initialRouteName="post.index">
         {routes.map((item: RoutesModel, index: number) => (
           <Stack.Screen
@@ -23,6 +24,6 @@ export default function Router () {
           />
         ))}
       </Stack.Navigator>
-    </React.Fragment>
+    </React.Suspense>
   )
 }

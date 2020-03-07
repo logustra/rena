@@ -1,12 +1,11 @@
 import React from 'react'
-import PostIndex from './views/postIndex'
 
 export default [
   {
     name: 'post.index',
-    component: PostIndex,
+    component: React.lazy(() => import('./views/postIndex')),
     options: {
-      title: 'Posts'
+      title: 'Rena'
     }
   }
 ]
