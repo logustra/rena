@@ -8,11 +8,13 @@ import Routes from './router'
 
 import {
   colors,
+  sizes,
   typography
 } from '@/styles'
 
 const theme: Theme = {
   colors,
+  sizes,
   typography
 }
 

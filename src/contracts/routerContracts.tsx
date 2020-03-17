@@ -5,5 +5,6 @@ export interface RoutesModel {
   component: FunctionComponent,
   options: {
     title: string
-  }
+  },
+  initialParams: {[key: string]: string}
 }

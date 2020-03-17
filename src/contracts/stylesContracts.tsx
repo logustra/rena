@@ -1,13 +1,8 @@
 
 export interface Theme {
-  colors: Colors,
+  colors: {[key: string]: string},
+  sizes: {[key: string]: string},
   typography: Typography
-}
-
-export interface Colors {
-  white: string,
-  gray: string,
-  black: string
 }
 
 export interface Typography {

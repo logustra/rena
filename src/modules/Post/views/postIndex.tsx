@@ -1,17 +1,39 @@
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { View, Text, Button } from 'react-native'
 
-export default function Post () {
-  const navigation = useNavigation()
+import {
+  authorListRequest,
+  postListRequest,
+  postIndexInitState,
+  postIndexReducer 
+} from '../stores/PostIndex'
+
+import { Loading } from 'atoms'
+import { Layout } from 'templates'
+
+import { PostList } from '../components'
+
+export default function PostIndex () {
+  const [postIndexState, postIndexDispatch] = React.useReducer(postIndexReducer, postIndexInitState)
+  const { postList } = postIndexState
+
+  React.useEffect(() => {
+    authorListRequest(postIndexDispatch)
+  }, [])
+
+  React.useEffect(() => {
+    postListRequest(postIndexDispatch)
+  }, [])
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Post Index</Text>
-      <Button
-        title="Go to Blog"
-        onPress={() => navigation.push('Blog')}
-      />
-    </View>
+    <Layout>
+      {postList.isFetching ? (
+        <Loading />
+      ) : (
+        <PostList
+          withAuthor={true}
+          data={postList}
+        />
+      )}
+    </Layout>
   )
 }

@@ -6,22 +6,23 @@ import { RoutesModel } from '@/contracts/routerContracts'
 
 import postRoutes from '@@/Post/router'
 
-const Stack = createStackNavigator()
-
 const routes = [
   ...postRoutes
 ]
 
+const Stack = createStackNavigator()
+
 export default function Router () {
   return (
     <React.Suspense fallback={<View />}>
-      <Stack.Navigator initialRouteName="post.index">
+      <Stack.Navigator 
+        initialRouteName="post.index"
+        headerMode="screen"
+      >
         {routes.map((item: RoutesModel, index: number) => (
           <Stack.Screen
             key={`route-${index}`}
-            name={item.name}
-            component={item.component}
-            options={item.options}
+            {...item}
           />
         ))}
       </Stack.Navigator>
