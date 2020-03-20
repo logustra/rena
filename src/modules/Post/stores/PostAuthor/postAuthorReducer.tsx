@@ -1,3 +1,5 @@
+import Reactotron from 'reactotron-react-native'
+
 import * as types from './postAuthorTypes'
 import { 
   PostAuthorState, 
@@ -86,4 +88,6 @@ export function postAuthorReducer (state: PostAuthorState, action: PostAuthorAct
         }
       }
   }
+
+  Reactotron.trackState({ state })
 }

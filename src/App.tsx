@@ -18,6 +18,7 @@ const theme: Theme = {
   typography
 }
 
+
 export default function App () {
   return (
     <NavigationContainer>

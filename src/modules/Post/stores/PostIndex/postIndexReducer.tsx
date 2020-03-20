@@ -1,3 +1,5 @@
+import Reactotron from 'reactotron-react-native'
+
 import * as types from './postIndexTypes'
 import { 
   PostListState, 
@@ -85,4 +87,6 @@ export function postIndexReducer (state: PostListState, action: PostListAction) 
         }
       }
   }
+
+  Reactotron.trackState({ state })
 }
