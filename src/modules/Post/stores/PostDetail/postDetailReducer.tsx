@@ -1,5 +1,3 @@
-import Reactotron from 'reactotron-react-native'
-
 import * as types from './postDetailTypes'
 import { 
   PostDetailState, 
@@ -83,6 +81,4 @@ export function postDetailReducer (state: PostDetailState, action: PostDetailAct
         }
       }
   }
-
-  Reactotron.trackState({ state })
 }
