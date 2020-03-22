@@ -1,3 +1,3 @@
-import { wait } from './utils'
+import { wait } from './promise'
 
 export { wait }

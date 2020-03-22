@@ -31,7 +31,7 @@ export async function authorDetailRequest (dispatch: Function, id: string) {
 
     authorDetailSuccess(dispatch, data)
   } catch (error) {
-    authorDetailError(dispatch, error.response.data)
+    authorDetailError(dispatch, error)
   }
 }
 
@@ -57,6 +57,6 @@ export async function postAuthorRequest (dispatch: Function) {
 
     postAuthorSuccess(dispatch, data)
   } catch (error) {
-    postAuthorError(dispatch, error.response.data)
+    postAuthorError(dispatch, error)
   }
 }

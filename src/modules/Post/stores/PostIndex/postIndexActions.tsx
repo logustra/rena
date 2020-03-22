@@ -31,7 +31,7 @@ export async function authorListRequest (dispatch: Function) {
 
     authorListSuccess(dispatch, data)
   } catch (error) {
-    authorListError(dispatch, error.response.data)
+    authorListError(dispatch, error)
   }
 }
 
@@ -57,6 +57,6 @@ export async function postListRequest (dispatch: Function) {
 
     postListSuccess(dispatch, data)
   } catch (error) {
-    postListError(dispatch, error.response.data)
+    postListError(dispatch, error)
   }
 }

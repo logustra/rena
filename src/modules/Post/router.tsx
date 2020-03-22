@@ -14,10 +14,10 @@ export default [
   {
     name: 'post.detail',
     component: React.lazy(() => import('./views/postDetail')),
-    options: ({ route }) => ({
-      title: route.params.title,
+    options: {
+      title: 'Detail',
       ...TransitionPresets.SlideFromRightIOS
-    }),
+    },
 
     initialParams: {
       postId: '0'
@@ -27,10 +27,10 @@ export default [
   {
     name: 'post.author',
     component: React.lazy(() => import('./views/postAuthor')),
-    options: ({ route }) => ({
-      title: route.params.title,
+    options: {
+      title: 'Author',
       ...TransitionPresets.SlideFromRightIOS
-    }),
+    },
 
     initialParams: {
       userId: '0'

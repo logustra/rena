@@ -31,7 +31,7 @@ export async function postDetailRequest (dispatch: Function, id: string) {
 
     postDetailSuccess(dispatch, data)
   } catch (error) {
-    postDetailError(dispatch, error.response.data)
+    postDetailError(dispatch, error)
   }
 }
 
@@ -57,6 +57,6 @@ export async function postCommentListRequest (dispatch: Function) {
 
     postCommentListSuccess(dispatch, data)
   } catch (error) {
-    postCommentListError(dispatch, error.response.data)
+    postCommentListError(dispatch, error)
   }
 }

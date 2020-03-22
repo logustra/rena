@@ -27,8 +27,7 @@ export default function PostList ({ withAuthor, data }: PostListProps) {
             <React.Fragment>
               <StyledCardTitle 
                 onPress={() => navigation.push('post.detail', {
-                  postId: item.id,
-                  title: item.title
+                  postId: item.id
                 })}
               >
                 {item.title}
@@ -40,8 +39,7 @@ export default function PostList ({ withAuthor, data }: PostListProps) {
 
                   <StyledCardLink
                     onPress={() => navigation.push('post.author', {
-                      userId: item.userId,
-                      title: item.title
+                      userId: item.userId
                     })}
                   >
                     {' ' + item.author.name}
