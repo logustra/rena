@@ -1,6 +1,4 @@
-import { Typography } from '@/contracts/stylesContracts'
-
-export const typography: Typography = {
+export const typography = {
   lato: {
     regular: '\'Lato-Regular\'',
     bold: '\'Lato-Bold\''

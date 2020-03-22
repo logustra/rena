@@ -1,6 +1,6 @@
 import { css } from 'styled-components/native'
 
-import { sizes } from '../'
+import { sizes } from '../base/sizes'
 
 export const margin = {
   top: {

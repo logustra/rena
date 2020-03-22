@@ -1,9 +1,7 @@
 import { css } from 'styled-components/native'
 
-import { 
-  sizes,
-  typography 
-} from '../'
+import { sizes } from '../base/sizes'
+import { typography } from '../base/typography'
 
 export const font = {
   size: {
