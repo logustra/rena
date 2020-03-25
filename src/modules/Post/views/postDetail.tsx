@@ -65,7 +65,7 @@ export default function PostDetail () {
                 Written by
                 
                 <StyledCardLink
-                  onPress={() => navigation.push('post.author', {
+                  onPress={() => navigation.navigate('post.author', {
                     userId: postDetail.data.userId,
                     title: authorDetail.data.name
                   })}
