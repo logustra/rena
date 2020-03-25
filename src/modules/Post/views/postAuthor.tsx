@@ -38,33 +38,37 @@ export default function PostAuthor () {
 
   return (
     <Layout>
-      {authorDetail.isFetching ? (
-        <Loading />
-      ) : (
-        <StyledCard>
-          <StyledCardTitle>
-            {authorDetail.data.name}
-          </StyledCardTitle>
-          
-          <StyledCardDescription>
-            Email: {authorDetail.data.email} {'\n'}
-            Website: {authorDetail.data.website}
-          </StyledCardDescription>
-        </StyledCard>
-      )}
+      <React.Fragment>
+        {authorDetail.isFetching ? (
+          <Loading />
+        ) : (
+          <StyledCard>
+            <React.Fragment>
+              <StyledCardTitle>
+                {authorDetail.data.name}
+              </StyledCardTitle>
+              
+              <StyledCardDescription>
+                Email: {authorDetail.data.email} {'\n'}
+                Website: {authorDetail.data.website}
+              </StyledCardDescription>
+            </React.Fragment>
+          </StyledCard>
+        )}
 
-      <StyledArticle>
-        Posted Article
-      </StyledArticle>
+        <StyledArticle>
+          Posted Article
+        </StyledArticle>
 
-      {postAuthor.isFetching ? (
-        <Loading />
-      ) : (
-        <PostList
-          withAuthor={false}
-          data={postAuthor}
-        />
-      )}
+        {postAuthor.isFetching ? (
+          <Loading />
+        ) : (
+          <PostList
+            withAuthor={false}
+            data={postAuthor}
+          />
+        )}
+      </React.Fragment>
     </Layout>
   )
 }

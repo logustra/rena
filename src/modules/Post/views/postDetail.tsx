@@ -51,54 +51,60 @@ export default function PostDetail () {
 
   return (
     <Layout>
-      {postDetail.isFetching ? (
-        <Loading />
-      ) : (
-        <StyledCard>
-          <StyledPostTitle>
-            {postDetail.data.title}
-          </StyledPostTitle>
-
-          <Text>
-            Written by
-            
-            <StyledCardLink
-              onPress={() => navigation.push('post.author', {
-                userId: postDetail.data.userId,
-                title: authorDetail.data.name
-              })}
-            >
-              {' ' + authorDetail.data.name}
-            </StyledCardLink>
-          </Text>
-
-          <StyledCardDescription>
-            {postDetail.data.body}
-          </StyledCardDescription>
-        </StyledCard>
-      )}
-
-      <View>
-        <StyledComment>
-          Comments
-        </StyledComment>
-
-        {postCommentList.isFetching ? (
+      <React.Fragment>
+        {postDetail.isFetching ? (
           <Loading />
         ) : (
-          postCommentList.data.map((item: PostCommentModel) => (
-            <StyledCard key={`comment-${item.id}`}>
-              <StyledCardTitle>
-                {item.name}
-              </StyledCardTitle>
+          <StyledCard>
+            <React.Fragment>
+              <StyledPostTitle>
+                {postDetail.data.title}
+              </StyledPostTitle>
+
+              <Text>
+                Written by
+                
+                <StyledCardLink
+                  onPress={() => navigation.push('post.author', {
+                    userId: postDetail.data.userId,
+                    title: authorDetail.data.name
+                  })}
+                >
+                  {' ' + authorDetail.data.name}
+                </StyledCardLink>
+              </Text>
 
               <StyledCardDescription>
-                {item.body}
+                {postDetail.data.body}
               </StyledCardDescription>
-            </StyledCard>
-          ))
+            </React.Fragment>
+          </StyledCard>
         )}
-      </View>
+
+        <View>
+          <StyledComment>
+            Comments
+          </StyledComment>
+
+          {postCommentList.isFetching ? (
+            <Loading />
+          ) : (
+            postCommentList.data.map((item: PostCommentModel) => (
+              <StyledCard key={`comment-${item.id}`}>
+                <React.Fragment>
+                  <StyledCardTitle>
+                    {item.name}
+                  </StyledCardTitle>
+
+                  <StyledCardDescription>
+                    {item.body}
+                  </StyledCardDescription>
+                </React.Fragment>
+              </StyledCard>
+            ))
+          )}
+        </View>
+      </React.Fragment>
     </Layout>
   )
 }
