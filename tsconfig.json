@@ -6,8 +6,6 @@
     "module": "esnext",
     "strict": true,
     "jsx": "react-native",
-    "noEmit": true,
-    "incremental": true,
     "isolatedModules": true,
     "importHelpers": true,
     "moduleResolution": "node",
@@ -41,12 +39,16 @@
 
   "exclude": [
     "node_modules",
+    "android",
+    "ios",
     "build",
     "public",
     "server",
     "babel.config.js", 
     "commitlint.config.js",
     "husky.config.js",
-    "metro.config.js"
+    "metro.config.js",
+    "react-native.config.js",
+    "stylelint.config.js"
   ]
 }
