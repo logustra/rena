@@ -93,7 +93,13 @@ module.exports = {
 
     '@typescript-eslint/type-annotation-spacing': ['error', {
       'before': false,
-      'after': true
+      'after': true,
+      overrides: { 
+        arrow: { 
+          before: true, 
+          after: true 
+        } 
+      }
     }],
   }
 }
