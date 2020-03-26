@@ -22,8 +22,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "link": "react-native link",
-    "lint": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx, src",
-    "lint:fix": "eslint -c .eslintrc.js --fix --ext .js,.jsx,.ts,.tsx, src"
+    "stylelint": "stylelint --config stylelint.config.js '**/*.tsx'",
+    "stylelint:fix": "stylelint --config stylelint.config.js --fix '**/*.tsx'",
+    "linter": "eslint -c .eslintrc.js --ext .js,.jsx,.ts,.tsx, src",
+    "linter:fix": "eslint -c .eslintrc.js --fix --ext .js,.jsx,.ts,.tsx, src",
+    "lint": "yarn stylelint && yarn linter",
+    "lint:fix": "yarn stylelint:fix && yarn linter:fix"
   },
   "config": {
     "commitizen": {
@@ -69,6 +73,10 @@
     "react-test-renderer": "16.9.0",
     "reactotron-react-native": "^4.0.3",
     "styled-components": "^5.0.1",
+    "stylelint": "^13.2.1",
+    "stylelint-config-react-native-styled-components": "^0.3.0",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-react-native": "^2.2.0",
     "typescript": "^3.8.2"
   },
   "dependencies": {
