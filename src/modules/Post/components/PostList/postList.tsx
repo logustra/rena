@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import Styled from 'styled-components/native'
 
-import { PostListModel, PostListProps } from '../../contracts/postListContracts'
+import { Props, PostListModel } from './postList.contracts'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
@@ -14,7 +14,7 @@ import {
   text
 } from '@/styles'
 
-export default function PostList ({ withAuthor, data }: PostListProps) {
+export default function PostList ({ withAuthor, data }: Props) {
   const navigation = useNavigation()
   
   return (

@@ -2,8 +2,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import { RoutesModel } from '@/contracts/routerContracts'
-
 import postRoutes from '@@/Post/router'
 
 const routes = [
@@ -19,7 +17,8 @@ export default function Router () {
         initialRouteName="post.index"
         headerMode="screen"
       >
-        {routes.map((item: RoutesModel, index: number) => (
+        
+        {routes.map((item: any, index: number) => (
           <Stack.Screen
             key={`route-${index}`}
             {...item}
