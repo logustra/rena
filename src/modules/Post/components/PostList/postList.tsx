@@ -6,7 +6,7 @@ import Styled from 'styled-components/native'
 import { PostListModel, PostListProps } from '../../contracts/postListContracts'
 
 import { Loading } from 'atoms'
-import { Card } from 'templates'
+import { Card } from 'molecules'
 
 import { 
   font,

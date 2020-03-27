@@ -17,10 +17,8 @@ import {
 } from '../stores/PostAuthor'
 
 import { Loading } from 'atoms'
-import { 
-  Card,
-  Layout
-} from 'templates'
+import { Card } from 'molecules'
+import { Layout } from 'templates'
 
 import {
   font,
