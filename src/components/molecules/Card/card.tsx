@@ -3,7 +3,7 @@ import Styled, { ThemeContext } from 'styled-components/native'
 
 import { Props } from './card.contracts'
 
-export default function Layout ({ children, style }: Props) {
+export default function Card ({ children, style }: Props) {
   const theme = React.useContext(ThemeContext)
 
   return (

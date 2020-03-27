@@ -1,3 +1,7 @@
+import Alert from './Alert/alert'
 import Card from './Card/card'
 
-export { Card }
+export { 
+  Alert,
+  Card
+}

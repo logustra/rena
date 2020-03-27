@@ -1,25 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
-import { 
-  createStackNavigator,
-  TransitionPresets
-} from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack'
 
 import { RoutesModel } from '@/contracts/routerContracts'
 
 import postRoutes from '@@/Post/router'
 
 const routes = [
-  ...postRoutes,
-
-  {
-    name: 'offline',
-    component: React.lazy(() => import('./views/offline')),
-    options: {
-      headerShown: false,
-      ...TransitionPresets.SlideFromRightIOS
-    }
-  }
+  ...postRoutes
 ]
 
 const Stack = createStackNavigator()
