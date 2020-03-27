@@ -6,6 +6,7 @@ import Styled, { ThemeContext } from 'styled-components/native'
 import { Props } from './layout.contracts'
 
 import {
+  setRefreshing,
   setOffline,
   commonInitState,
   commonReducer
@@ -21,13 +22,11 @@ export default function Layout ({ children, style }: Props) {
 
   const [commonState, commonDispatch] = React.useReducer(commonReducer, commonInitState)
 
-  const [refreshing, setRefreshing] = React.useState(false)
+  function onRefresh () {
+    setRefreshing(commonDispatch, true)
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true)
-
-    wait(2000).then(() => setRefreshing(false))
-  }, [])
+    wait(2000).then(() => setRefreshing(commonDispatch, false))
+  }
 
   React.useEffect(() => {
     if (netInfo.details) {
@@ -51,7 +50,7 @@ export default function Layout ({ children, style }: Props) {
       <StyledLayoutContainer
         refreshControl={
           <RefreshControl
-            refreshing={refreshing}
+            refreshing={commonState.isRefreshing}
             onRefresh={onRefresh}
           />
         }

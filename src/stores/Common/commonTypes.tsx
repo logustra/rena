@@ -1,1 +1,2 @@
+export const SET_REFRESHING = 'SET_REFRESHING'
 export const SET_OFFLINE = 'SET_OFFLINE'
