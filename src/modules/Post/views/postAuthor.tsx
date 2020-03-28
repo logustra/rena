@@ -30,10 +30,22 @@ export default function PostAuthor () {
 
   React.useEffect(() => {
     authorDetailRequest(postAuthorDispatch, userId)
+  }, [userId])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      authorDetailRequest(postAuthorDispatch, userId)
+    }
   }, [userId, commonState.isRefreshing])
 
   React.useEffect(() => {
     postAuthorRequest(postAuthorDispatch)
+  }, [])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      postAuthorRequest(postAuthorDispatch)
+    }
   }, [commonState.isRefreshing])
 
   return (

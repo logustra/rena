@@ -21,10 +21,22 @@ export default function PostIndex () {
 
   React.useEffect(() => {
     authorListRequest(postIndexDispatch)
+  }, [])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      authorListRequest(postIndexDispatch)
+    }
   }, [commonState.isRefreshing])
 
   React.useEffect(() => {
     postListRequest(postIndexDispatch)
+  }, [])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      postListRequest(postIndexDispatch)
+    }
   }, [commonState.isRefreshing])
 
   return (

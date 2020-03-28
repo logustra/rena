@@ -41,14 +41,32 @@ export default function PostDetail () {
 
   React.useEffect(() => {
     postDetailRequest(postDetailDispatch, postId)
+  }, [postId])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      postDetailRequest(postDetailDispatch, postId)
+    }
   }, [postId, commonState.isRefreshing])
 
   React.useEffect(() => {
     authorDetailRequest(postAuthorDispatch, postDetail.data.userId)
+  }, [postDetail.data.userId])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      authorDetailRequest(postAuthorDispatch, postDetail.data.userId)
+    }
   }, [postDetail.data.userId, commonState.isRefreshing])
 
   React.useEffect(() => {
     postCommentListRequest(postDetailDispatch)
+  }, [])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) {
+      postCommentListRequest(postDetailDispatch)
+    }
   }, [commonState.isRefreshing])
 
   return (
