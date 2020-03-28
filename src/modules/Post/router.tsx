@@ -1,13 +1,11 @@
 import React from 'react'
-import { TransitionPresets } from '@react-navigation/stack'
 
 export default [
   {
     name: 'post.index',
     component: React.lazy(() => import('./views/postIndex')),
     options: {
-      title: 'Rena',
-      ...TransitionPresets.SlideFromRightIOS
+      title: 'Rena'
     }
   },
 
@@ -15,8 +13,7 @@ export default [
     name: 'post.detail',
     component: React.lazy(() => import('./views/postDetail')),
     options: {
-      title: 'Detail',
-      ...TransitionPresets.SlideFromRightIOS
+      title: 'Detail'
     },
 
     initialParams: {
@@ -28,8 +25,7 @@ export default [
     name: 'post.author',
     component: React.lazy(() => import('./views/postAuthor')),
     options: {
-      title: 'Author',
-      ...TransitionPresets.SlideFromRightIOS
+      title: 'Author'
     },
 
     initialParams: {
