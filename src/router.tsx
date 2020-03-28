@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import postRoutes from '@@/Post/router'
@@ -12,7 +12,7 @@ const Stack = createStackNavigator()
 
 export default function Router () {
   return (
-    <React.Suspense fallback={<View />}>
+    <React.Suspense fallback={<Text>loading...</Text>}>
       <Stack.Navigator 
         initialRouteName="post.index"
         headerMode="screen"
