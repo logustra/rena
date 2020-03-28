@@ -8,8 +8,9 @@ import {
   postAuthorInitState,
   postAuthorReducer 
 } from '../stores/PostAuthor'
-
 import { PostList } from '../components'
+
+import { Stores } from '@/store'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
@@ -21,18 +22,19 @@ import {
 } from '@/styles'
 
 export default function PostAuthor () {
-  const { userId }: {[key: string]: string} = useRoute().params
+  const { userId }: any = useRoute().params
+  const { commonState } = React.useContext<any>(Stores)
   
   const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorReducer, postAuthorInitState)
   const { authorDetail, postAuthor } = postAuthorState
 
   React.useEffect(() => {
     authorDetailRequest(postAuthorDispatch, userId)
-  }, [userId])
+  }, [userId, commonState.isRefreshing])
 
   React.useEffect(() => {
     postAuthorRequest(postAuthorDispatch)
-  }, [])
+  }, [commonState.isRefreshing])
 
   return (
     <Layout>

@@ -6,23 +6,26 @@ import {
   postIndexInitState,
   postIndexReducer 
 } from '../stores/PostIndex'
+import { PostList } from '../components'
+
+import { Stores } from '@/store'
 
 import { Loading } from 'atoms'
 import { Layout } from 'templates'
 
-import { PostList } from '../components'
-
 export default function PostIndex () {
+  const { commonState } = React.useContext<any>(Stores)
+
   const [postIndexState, postIndexDispatch] = React.useReducer(postIndexReducer, postIndexInitState)
   const { postList } = postIndexState
 
   React.useEffect(() => {
     authorListRequest(postIndexDispatch)
-  }, [])
+  }, [commonState.isRefreshing])
 
   React.useEffect(() => {
     postListRequest(postIndexDispatch)
-  }, [])
+  }, [commonState.isRefreshing])
 
   return (
     <Layout>

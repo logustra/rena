@@ -16,6 +16,8 @@ import {
   postAuthorReducer 
 } from '../stores/PostAuthor'
 
+import { Stores } from '@/store'
+
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
@@ -27,25 +29,27 @@ import {
 } from '@/styles'
 
 export default function PostDetail () {
-  const { postId }: {[key: string]: string} = useRoute().params
+  const { postId }: any = useRoute().params
   const navigation = useNavigation()
+  const { commonState } = React.useContext<any>(Stores)
   
   const [postDetailState, postDetailDispatch] = React.useReducer(postDetailReducer, postDetailInitState)
-  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorReducer, postAuthorInitState)
   const { postDetail, postCommentList } = postDetailState
+
+  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorReducer, postAuthorInitState)
   const { authorDetail } = postAuthorState
 
   React.useEffect(() => {
     postDetailRequest(postDetailDispatch, postId)
-  }, [postId])
+  }, [postId, commonState.isRefreshing])
 
   React.useEffect(() => {
     authorDetailRequest(postAuthorDispatch, postDetail.data.userId)
-  }, [postDetail.data.userId])
+  }, [postDetail.data.userId, commonState.isRefreshing])
 
   React.useEffect(() => {
     postCommentListRequest(postDetailDispatch)
-  }, [])
+  }, [commonState.isRefreshing])
 
   return (
     <Layout>

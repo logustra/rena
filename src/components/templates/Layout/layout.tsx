@@ -7,10 +7,10 @@ import { Props } from './layout.contracts'
 
 import {
   setRefreshing,
-  setOffline,
-  commonInitState,
-  commonReducer
-} from '@/stores/Common'
+  setOffline
+} from '@/stores/commonActions'
+
+import { Stores } from '@/store'
 
 import { wait } from '@/libs'
 
@@ -19,8 +19,7 @@ import { Alert } from 'molecules'
 export default function Layout ({ children, style }: Props) {
   const netInfo = useNetInfo()
   const theme = React.useContext(ThemeContext)
-
-  const [commonState, commonDispatch] = React.useReducer(commonReducer, commonInitState)
+  const { commonState, commonDispatch } = React.useContext<any>(Stores)
 
   function onRefresh () {
     setRefreshing(commonDispatch, true)
@@ -32,7 +31,7 @@ export default function Layout ({ children, style }: Props) {
     if (netInfo.details) {
       setOffline(commonDispatch, !netInfo.isConnected)
     }
-  }, [netInfo])
+  }, [netInfo, commonDispatch])
 
   return (
     <StyledLayout 

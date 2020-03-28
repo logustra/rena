@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { Theme } from '@/contracts/stylesContracts'
 
+import Store from './store'
 import Routes from './router'
 
 import {
@@ -22,9 +23,11 @@ const theme: Theme = {
 export default function App () {
   return (
     <NavigationContainer>
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>  
+      <Store>
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>  
+      </Store>
     </NavigationContainer>
   )
 }
