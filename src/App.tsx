@@ -19,15 +19,14 @@ const theme: Theme = {
   typography
 }
 
-
 export default function App () {
   return (
-    <NavigationContainer>
-      <Store>
-        <ThemeProvider theme={theme}>
+    <Store>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
           <Routes />
-        </ThemeProvider>  
-      </Store>
-    </NavigationContainer>
+        </NavigationContainer>
+      </ThemeProvider>
+    </Store>
   )
 }
