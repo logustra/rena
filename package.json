@@ -62,19 +62,18 @@
     "eslint-plugin-react-hooks": "^2.4.0",
     "husky": "^4.2.3",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react": "^16.13.1",
+    "react-native": "^0.62.0",
     "react-native-dotenv": "^0.2.0",
     "react-native-gesture-handler": "^1.6.0",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.2.0",
+    "react-native-tailwindcss": "^1.1.9",
     "react-test-renderer": "16.9.0",
     "reactotron-react-native": "^4.0.3",
     "stylelint": "^13.2.1",
     "stylelint-react-native": "^2.2.0",
     "typescript": "^3.8.2"
-  },
-  "dependencies": {
-    "react": "^16.13.0",
-    "react-native": "^0.62.0"
   }
 }
