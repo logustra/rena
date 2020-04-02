@@ -3,10 +3,10 @@ import { useRoute } from '@react-navigation/native'
 import Styled from 'styled-components/native'
 
 import {
-  authorDetailRequest,
-  postAuthorRequest,
   postAuthorInitState,
-  postAuthorReducer 
+  postAuthorMutations,
+  authorDetailRequest,
+  postAuthorRequest
 } from '../stores/PostAuthor'
 import { PostList } from '../components'
 
@@ -25,7 +25,7 @@ export default function PostAuthor () {
   const { userId }: any = useRoute().params
   const { commonState } = React.useContext<any>(Stores)
   
-  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorReducer, postAuthorInitState)
+  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorMutations, postAuthorInitState)
   const { authorDetail, postAuthor } = postAuthorState
 
   React.useEffect(() => {

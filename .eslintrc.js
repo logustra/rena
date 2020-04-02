@@ -70,6 +70,10 @@ module.exports = {
       'ignoreRestSiblings': false
     }],
 
+    '@typescript-eslint/no-use-before-define': ['error', {
+      'functions': false
+    }],
+
     '@typescript-eslint/member-delimiter-style': ['error', {
       'multiline': {
         'delimiter': 'comma',

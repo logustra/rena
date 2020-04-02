@@ -5,21 +5,7 @@ import {
   PostIndexAction 
 } from '../../contracts/postIndexContracts'
 
-export const postIndexInitState = {
-  authorList: {
-    data: [],
-    isFetching: false,
-    isError: {}
-  },
-
-  postList: {
-    data: [],
-    isFetching: false,
-    isError: {}
-  }
-}
-
-export function postIndexReducer (state: PostIndexState, action: PostIndexAction): any {
+export default (state: PostIndexState, action: PostIndexAction): any => {
   const { type, response } = action
   const { authorList, postList } = state
 
@@ -47,7 +33,7 @@ export function postIndexReducer (state: PostIndexState, action: PostIndexAction
       return {
         ...state,
         authorList: {
-          data: postIndexInitState.authorList.data,
+          data: [],
           isFetching: false,
           isError: response
         }
@@ -79,7 +65,7 @@ export function postIndexReducer (state: PostIndexState, action: PostIndexAction
       return {
         ...state,
         postList: {
-          data: postIndexInitState.postList.data,
+          data: [],
           isFetching: false,
           isError: response
         }

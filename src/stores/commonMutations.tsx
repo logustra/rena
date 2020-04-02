@@ -4,12 +4,7 @@ import {
   CommonAction
 } from '@/contracts/commonContracts'
 
-export const commonInitState = {
-  isRefreshing: false,
-  isOffline: false
-}
-
-export function commonReducer (state: CommonState, action: CommonAction): any {
+export default (state: CommonState, action: CommonAction): any => {
   const { type, response } = action
 
   switch(type) {

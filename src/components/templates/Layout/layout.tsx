@@ -8,7 +8,7 @@ import { Props } from './layout.contracts'
 import {
   setRefreshing,
   setOffline
-} from '@/stores/commonActions'
+} from '@/stores'
 
 import { Stores } from '@/store'
 

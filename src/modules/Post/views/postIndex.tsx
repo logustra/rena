@@ -1,10 +1,10 @@
 import React from 'react'
 
 import {
-  authorListRequest,
-  postListRequest,
   postIndexInitState,
-  postIndexReducer 
+  postIndexMutations,
+  authorListRequest,
+  postListRequest
 } from '../stores/PostIndex'
 import { PostList } from '../components'
 
@@ -16,7 +16,7 @@ import { Layout } from 'templates'
 export default function PostIndex () {
   const { commonState } = React.useContext<any>(Stores)
 
-  const [postIndexState, postIndexDispatch] = React.useReducer(postIndexReducer, postIndexInitState)
+  const [postIndexState, postIndexDispatch] = React.useReducer(postIndexMutations, postIndexInitState)
   const { postList } = postIndexState
 
   React.useEffect(() => {

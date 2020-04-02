@@ -5,15 +5,15 @@ import Styled from 'styled-components/native'
 
 import { PostCommentModel } from '../contracts/postDetailContracts'
 import {
+  postDetailInitState,
+  postDetailMutations,
   postDetailRequest,
   postCommentListRequest,
-  postDetailInitState,
-  postDetailReducer 
 } from '../stores/PostDetail'
 import { 
-  authorDetailRequest, 
   postAuthorInitState, 
-  postAuthorReducer 
+  postAuthorMutations,
+  authorDetailRequest
 } from '../stores/PostAuthor'
 
 import { Stores } from '@/store'
@@ -33,10 +33,10 @@ export default function PostDetail () {
   const navigation = useNavigation()
   const { commonState } = React.useContext<any>(Stores)
   
-  const [postDetailState, postDetailDispatch] = React.useReducer(postDetailReducer, postDetailInitState)
+  const [postDetailState, postDetailDispatch] = React.useReducer(postDetailMutations, postDetailInitState)
   const { postDetail, postCommentList } = postDetailState
 
-  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorReducer, postAuthorInitState)
+  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorMutations, postAuthorInitState)
   const { authorDetail } = postAuthorState
 
   React.useEffect(() => {

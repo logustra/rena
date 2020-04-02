@@ -1,9 +1,13 @@
+import commonInitState from './commonState'
+import commonMutations from './commonMutations'
 import {
-  commonInitState,
-  commonReducer
-} from './commonReducer'
+  setRefreshing,
+  setOffline
+} from './commonActions'
 
 export {
   commonInitState,
-  commonReducer
+  commonMutations,
+  setRefreshing,
+  setOffline
 }

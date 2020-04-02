@@ -4,26 +4,7 @@ import {
   PostAuthorAction 
 } from '../../contracts/postAuthorContracts'
 
-export const postAuthorInitState = {
-  authorDetail: {
-    data: {
-      id: 0,
-      name: '',
-      email: '',
-      website: ''
-    },
-    isFetching: false,
-    isError: {}
-  },
-
-  postAuthor: {
-    data: [],
-    isFetching: false,
-    isError: {}
-  }
-}
-
-export function postAuthorReducer (state: PostAuthorState, action: PostAuthorAction): any {
+export default (state: PostAuthorState, action: PostAuthorAction): any => {
   const { type, response } = action
   const { authorDetail, postAuthor } = state
 
@@ -51,7 +32,7 @@ export function postAuthorReducer (state: PostAuthorState, action: PostAuthorAct
       return {
         ...state,
         authorDetail: {
-          data: postAuthorInitState.authorDetail.data,
+          data: [],
           isFetching: false,
           isError: response
         }
@@ -80,7 +61,7 @@ export function postAuthorReducer (state: PostAuthorState, action: PostAuthorAct
       return {
         ...state,
         postAuthor: {
-          data: postAuthorInitState.postAuthor.data,
+          data: [],
           isFetching: false,
           isError: response
         }

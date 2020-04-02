@@ -4,21 +4,7 @@ import {
   PostDetailAction 
 } from '../../contracts/postDetailContracts'
 
-export const postDetailInitState = {
-  postDetail: {
-    data: [],
-    isFetching: false,
-    isError: {}
-  },
-
-  postCommentList: {
-    data: [],
-    isFetching: false,
-    isError: {}
-  }
-}
-
-export function postDetailReducer (state: PostDetailState, action: PostDetailAction): any {
+export default (state: PostDetailState, action: PostDetailAction): any => {
   const { type, response } = action
   const { postDetail, postCommentList } = state
 
@@ -46,7 +32,7 @@ export function postDetailReducer (state: PostDetailState, action: PostDetailAct
       return {
         ...state,
         authorList: {
-          data: postDetailInitState.postDetail.data,
+          data: [],
           isFetching: false,
           isError: response
         }
@@ -75,7 +61,7 @@ export function postDetailReducer (state: PostDetailState, action: PostDetailAct
       return {
         ...state,
         postCommentList: {
-          data: postDetailInitState.postCommentList.data,
+          data: [],
           isFetching: false,
           isError: response
         }
