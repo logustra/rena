@@ -50,7 +50,6 @@
     "@types/react": "^16.9.23",
     "@types/react-native": "^0.61.17",
     "@types/react-native-dotenv": "^0.2.0",
-    "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "axios": "^0.19.2",
@@ -70,10 +69,7 @@
     "react-native-screens": "^2.2.0",
     "react-test-renderer": "16.9.0",
     "reactotron-react-native": "^4.0.3",
-    "styled-components": "^5.0.1",
     "stylelint": "^13.2.1",
-    "stylelint-config-react-native-styled-components": "^0.3.0",
-    "stylelint-processor-styled-components": "^1.10.0",
     "stylelint-react-native": "^2.2.0",
     "typescript": "^3.8.2"
   },

@@ -8,13 +8,13 @@ import {
 } from '../stores/PostIndex'
 import { PostList } from '../components'
 
-import { Stores } from '@/store'
+import { StoresContext } from '@/stores'
 
 import { Loading } from 'atoms'
 import { Layout } from 'templates'
 
 export default function PostIndex () {
-  const { commonState } = React.useContext<any>(Stores)
+  const { commonState } = React.useContext<any>(StoresContext)
 
   const [postIndexState, postIndexDispatch] = React.useReducer(postIndexMutations, postIndexInitState)
   const { postList } = postIndexState

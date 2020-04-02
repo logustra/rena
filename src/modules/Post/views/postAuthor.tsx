@@ -1,6 +1,5 @@
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
-import Styled from 'styled-components/native'
 
 import {
   postAuthorInitState,
@@ -10,20 +9,17 @@ import {
 } from '../stores/PostAuthor'
 import { PostList } from '../components'
 
-import { Stores } from '@/store'
+import { StoresContext } from '@/stores'
+
+import { Text } from 'react-native'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
 
-import {
-  font,
-  margin
-} from '@/styles'
-
 export default function PostAuthor () {
   const { userId }: any = useRoute().params
-  const { commonState } = React.useContext<any>(Stores)
+  const { commonState } = React.useContext<any>(StoresContext)
   
   const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorMutations, postAuthorInitState)
   const { authorDetail, postAuthor } = postAuthorState
@@ -54,23 +50,23 @@ export default function PostAuthor () {
         {authorDetail.isFetching ? (
           <Loading />
         ) : (
-          <StyledCard>
+          <Card>
             <React.Fragment>
-              <StyledCardTitle>
+              <Text>
                 {authorDetail.data.name}
-              </StyledCardTitle>
+              </Text>
               
-              <StyledCardDescription>
+              <Text>
                 Email: {authorDetail.data.email} {'\n'}
                 Website: {authorDetail.data.website}
-              </StyledCardDescription>
+              </Text>
             </React.Fragment>
-          </StyledCard>
+          </Card>
         )}
 
-        <StyledArticle>
+        <Text>
           Posted Article
-        </StyledArticle>
+        </Text>
 
         {postAuthor.isFetching ? (
           <Loading />
@@ -85,21 +81,21 @@ export default function PostAuthor () {
   )
 }
 
-const StyledArticle = Styled.Text`
-  ${font.size.base}
-  ${font.family.lato.bold}
-  ${margin.bottom[4]}
-`
+// const StyledArticle = Styled.Text`
+//   ${font.size.base}
+//   ${font.family.lato.bold}
+//   ${margin.bottom[4]}
+// `
 
-const StyledCard = Styled(Card)`
-  ${margin.bottom[4]}
-`
+// const StyledCard = Styled(Card)`
+//   ${margin.bottom[4]}
+// `
 
-const StyledCardTitle = Styled.Text`
-  ${font.size.base}
-  ${font.family.lato.bold}
-`
+// const StyledCardTitle = Styled.Text`
+//   ${font.size.base}
+//   ${font.family.lato.bold}
+// `
 
-const StyledCardDescription = Styled.Text`
-  ${margin.top[3]}
-`
+// const StyledCardDescription = Styled.Text`
+//   ${margin.top[3]}
+// `

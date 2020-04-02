@@ -1,25 +1,28 @@
 import React from 'react'
-import { RefreshControl } from 'react-native'
 import { useNetInfo } from '@react-native-community/netinfo'
-import Styled, { ThemeContext } from 'styled-components/native'
 
 import { Props } from './layout.contracts'
 
 import {
+  StoresContext,
   setRefreshing,
   setOffline
 } from '@/stores'
 
-import { Stores } from '@/store'
-
 import { wait } from '@/libs'
+
+import { 
+  SafeAreaView,
+  ScrollView,
+  RefreshControl 
+} from 'react-native'
 
 import { Alert } from 'molecules'
 
 export default function Layout ({ children, style }: Props) {
   const netInfo = useNetInfo()
-  const theme = React.useContext(ThemeContext)
-  const { commonState, commonDispatch } = React.useContext<any>(Stores)
+
+  const { commonState, commonDispatch } = React.useContext<any>(StoresContext)
 
   function onRefresh () {
     setRefreshing(commonDispatch, true)
@@ -34,10 +37,7 @@ export default function Layout ({ children, style }: Props) {
   }, [netInfo, commonDispatch])
 
   return (
-    <StyledLayout 
-      theme={theme}
-      style={style}
-    >
+    <SafeAreaView style={style}>
       {commonState.isOffline ? (
         <Alert>
           {'You\'re Offline'}
@@ -46,7 +46,7 @@ export default function Layout ({ children, style }: Props) {
         null
       )}
       
-      <StyledLayoutContainer
+      <ScrollView
         refreshControl={
           <RefreshControl
             refreshing={commonState.isRefreshing}
@@ -55,16 +55,16 @@ export default function Layout ({ children, style }: Props) {
         }
       >
         {children}
-      </StyledLayoutContainer>
-    </StyledLayout>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
-const StyledLayout = Styled.SafeAreaView`
-  flex: 1;
-  background-color: ${props => props.theme.colors.gray};
-`
+// const StyledLayout = Styled.SafeAreaView`
+//   flex: 1;
+//   background-color: ${props => props.theme.colors.gray};
+// `
 
-const StyledLayoutContainer = Styled.ScrollView`
-  padding: ${props => props.theme.sizes.base};
-`
+// const StyledLayoutContainer = Styled.ScrollView`
+//   padding: ${props => props.theme.sizes.base};
+// `

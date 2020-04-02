@@ -1,4 +1,6 @@
 module.exports = {
-  processors: ['stylelint-processor-styled-components'],
-  extends: ['stylelint-config-react-native-styled-components']
+  plugins: ['stylelint-react-native'],
+  rules: {
+    'react-native/css-property-no-unknown': true
+  }
 }

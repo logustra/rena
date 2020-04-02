@@ -1,7 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
 import { useRoute, useNavigation } from '@react-navigation/native'
-import Styled from 'styled-components/native'
 
 import { PostCommentModel } from '../contracts/postDetailContracts'
 import {
@@ -16,22 +14,18 @@ import {
   authorDetailRequest
 } from '../stores/PostAuthor'
 
-import { Stores } from '@/store'
+import { StoresContext } from '@/stores'
+
+import { Text, View } from 'react-native'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
 
-import {
-  font,
-  margin,
-  text
-} from '@/styles'
-
 export default function PostDetail () {
   const { postId }: any = useRoute().params
   const navigation = useNavigation()
-  const { commonState } = React.useContext<any>(Stores)
+  const { commonState } = React.useContext<any>(StoresContext)
   
   const [postDetailState, postDetailDispatch] = React.useReducer(postDetailMutations, postDetailInitState)
   const { postDetail, postCommentList } = postDetailState
@@ -75,52 +69,52 @@ export default function PostDetail () {
         {postDetail.isFetching ? (
           <Loading />
         ) : (
-          <StyledCard>
+          <Card>
             <React.Fragment>
-              <StyledPostTitle>
+              <Text>
                 {postDetail.data.title}
-              </StyledPostTitle>
+              </Text>
 
               <Text>
                 Written by
                 
-                <StyledCardLink
+                <Text
                   onPress={() => navigation.navigate('post.author', {
                     userId: postDetail.data.userId,
                     title: authorDetail.data.name
                   })}
                 >
                   {' ' + authorDetail.data.name}
-                </StyledCardLink>
+                </Text>
               </Text>
 
-              <StyledCardDescription>
+              <Text>
                 {postDetail.data.body}
-              </StyledCardDescription>
+              </Text>
             </React.Fragment>
-          </StyledCard>
+          </Card>
         )}
 
         <View>
-          <StyledComment>
+          <Text>
             Comments
-          </StyledComment>
+          </Text>
 
           {postCommentList.isFetching ? (
             <Loading />
           ) : (
             postCommentList.data.map((item: PostCommentModel) => (
-              <StyledCard key={`comment-${item.id}`}>
+              <Card key={`comment-${item.id}`}>
                 <React.Fragment>
-                  <StyledCardTitle>
+                  <Text>
                     {item.name}
-                  </StyledCardTitle>
+                  </Text>
 
-                  <StyledCardDescription>
+                  <Text>
                     {item.body}
-                  </StyledCardDescription>
+                  </Text>
                 </React.Fragment>
-              </StyledCard>
+              </Card>
             ))
           )}
         </View>
@@ -129,30 +123,30 @@ export default function PostDetail () {
   )
 }
 
-const StyledPostTitle = Styled.Text`
-  ${font.size.xl}
-  ${font.family.lato.bold}
-`
+// const StyledPostTitle = Styled.Text`
+//   ${font.size.xl}
+//   ${font.family.lato.bold}
+// `
 
-const StyledComment = Styled.Text`
-  ${font.size.base}
-  ${font.family.lato.bold}
-  ${margin.bottom[4]}
-`
+// const StyledComment = Styled.Text`
+//   ${font.size.base}
+//   ${font.family.lato.bold}
+//   ${margin.bottom[4]}
+// `
 
-const StyledCard = Styled(Card)`
-  ${margin.bottom[4]}
-`
+// const StyledCard = Styled(Card)`
+//   ${margin.bottom[4]}
+// `
 
-const StyledCardTitle = Styled.Text`
-  ${font.size.base}
-  ${font.family.lato.bold}
-`
+// const StyledCardTitle = Styled.Text`
+//   ${font.size.base}
+//   ${font.family.lato.bold}
+// `
 
-const StyledCardDescription = Styled.Text`
-  ${margin.top[3]}
-`
+// const StyledCardDescription = Styled.Text`
+//   ${margin.top[3]}
+// `
 
-const StyledCardLink = Styled.Text`
-  ${text.blue}
-`
+// const StyledCardLink = Styled.Text`
+//   ${text.blue}
+// `

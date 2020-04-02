@@ -1,82 +1,79 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import Styled from 'styled-components/native'
 
 import { Props, PostListModel } from './postList.contracts'
 
+import { 
+  View, 
+  Text 
+} from 'react-native'
+
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
-
-import { 
-  font,
-  margin,
-  text
-} from '@/styles'
 
 export default function PostList ({ withAuthor, data }: Props) {
   const navigation = useNavigation()
   
   return (
-    <StyledPostList>
+    <View>
       {data.isFetching ? (
         <Loading />
       ) : (
         data.data.map((item: PostListModel) => (
-          <StyledCard key={`post-${item.id}`}>
+          <Card key={`post-${item.id}`}>
             <React.Fragment>
-              <StyledCardTitle 
+              <Text 
                 onPress={() => navigation.navigate('post.detail', {
                   postId: item.id
                 })}
               >
                 {item.title}
-              </StyledCardTitle>
+              </Text>
 
               {withAuthor && item.author ? (
                 <Text>
                   Written by
 
-                  <StyledCardLink
+                  <Text
                     onPress={() => navigation.navigate('post.author', {
                       userId: item.userId
                     })}
                   >
                     {' ' + item.author.name}
-                  </StyledCardLink>
+                  </Text>
                 </Text>
               ) : (
                 null
               )}
 
-              <StyledCardDescription>
+              <Text>
                 {item.body}
-              </StyledCardDescription>
+              </Text>
             </React.Fragment>
-          </StyledCard>
+          </Card>
         ))
       )}
-    </StyledPostList>
+    </View>
   )
 }
 
-const StyledPostList = Styled.View`
+// const StyledPostList = Styled.View`
   
-`
+// `
 
-const StyledCard = Styled(Card)`
-  ${margin.bottom[4]}
-`
+// const StyledCard = Styled(Card)`
+//   ${margin.bottom[4]}
+// `
 
-const StyledCardTitle = Styled.Text`
-  ${font.size.base}
-  ${font.family.lato.bold}
-`
+// const StyledCardTitle = Styled.Text`
+//   ${font.size.base}
+//   ${font.family.lato.bold}
+// `
 
-const StyledCardDescription = Styled.Text`
-  ${margin.top[3]}
-`
+// const StyledCardDescription = Styled.Text`
+//   ${margin.top[3]}
+// `
 
-const StyledCardLink = Styled.Text`
-  ${text.blue}
-`
+// const StyledCardLink = Styled.Text`
+//   ${text.blue}
+// `
