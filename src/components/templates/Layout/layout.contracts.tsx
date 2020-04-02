@@ -1,4 +1,5 @@
 export interface Props {
   children: JSX.Element,
-  style?: {}
+  style?: {}[],
+  containerStyle?: {}[]
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 import { useRoute, useNavigation } from '@react-navigation/native'
+import { tw } from 'react-native-tailwindcss'
 
 import { PostCommentModel } from '../contracts/postDetailContracts'
 import {
   postDetailInitState,
   postDetailMutations,
   postDetailRequest,
-  postCommentListRequest,
+  postCommentListRequest
 } from '../stores/PostDetail'
 import { 
   postAuthorInitState, 
@@ -16,11 +17,17 @@ import {
 
 import { StoresContext } from '@/stores'
 
-import { Text, View } from 'react-native'
+import { 
+  Text, 
+  View,
+  StyleSheet
+} from 'react-native'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
+
+import { typography } from '@/styles'
 
 export default function PostDetail () {
   const { postId }: any = useRoute().params
@@ -71,7 +78,7 @@ export default function PostDetail () {
         ) : (
           <Card>
             <React.Fragment>
-              <Text>
+              <Text style={[styles.postTitle]}>
                 {postDetail.data.title}
               </Text>
 
@@ -79,6 +86,7 @@ export default function PostDetail () {
                 Written by
                 
                 <Text
+                  style={[tw.textBlue500]}
                   onPress={() => navigation.navigate('post.author', {
                     userId: postDetail.data.userId,
                     title: authorDetail.data.name
@@ -88,7 +96,7 @@ export default function PostDetail () {
                 </Text>
               </Text>
 
-              <Text>
+              <Text style={[tw.mT3]}>
                 {postDetail.data.body}
               </Text>
             </React.Fragment>
@@ -96,7 +104,7 @@ export default function PostDetail () {
         )}
 
         <View>
-          <Text>
+          <Text style={[styles.commentTitle]}>
             Comments
           </Text>
 
@@ -104,13 +112,16 @@ export default function PostDetail () {
             <Loading />
           ) : (
             postCommentList.data.map((item: PostCommentModel) => (
-              <Card key={`comment-${item.id}`}>
+              <Card 
+                key={`comment-${item.id}`}
+                style={[tw.mB4]}
+              >
                 <React.Fragment>
-                  <Text>
+                  <Text style={[styles.cardTitle]}>
                     {item.name}
                   </Text>
 
-                  <Text>
+                  <Text style={[tw.mT3]}>
                     {item.body}
                   </Text>
                 </React.Fragment>
@@ -123,30 +134,20 @@ export default function PostDetail () {
   )
 }
 
-// const StyledPostTitle = Styled.Text`
-//   ${font.size.xl}
-//   ${font.family.lato.bold}
-// `
+const styles = StyleSheet.create({
+  postTitle: {
+    fontFamily: typography.lato.bold,
+    ...tw.textXl
+  },
 
-// const StyledComment = Styled.Text`
-//   ${font.size.base}
-//   ${font.family.lato.bold}
-//   ${margin.bottom[4]}
-// `
+  cardTitle: {
+    fontFamily: typography.lato.bold,
+    ...tw.textBase
+  },
 
-// const StyledCard = Styled(Card)`
-//   ${margin.bottom[4]}
-// `
-
-// const StyledCardTitle = Styled.Text`
-//   ${font.size.base}
-//   ${font.family.lato.bold}
-// `
-
-// const StyledCardDescription = Styled.Text`
-//   ${margin.top[3]}
-// `
-
-// const StyledCardLink = Styled.Text`
-//   ${text.blue}
-// `
+  commentTitle: {
+    fontFamily: typography.lato.bold,
+    ...tw.textBase,
+    ...tw.mY4
+  }
+})

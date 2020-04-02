@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNetInfo } from '@react-native-community/netinfo'
+import { tw } from 'react-native-tailwindcss'
 
 import { Props } from './layout.contracts'
 
@@ -14,12 +15,13 @@ import { wait } from '@/libs'
 import { 
   SafeAreaView,
   ScrollView,
-  RefreshControl 
+  RefreshControl,
+  StyleSheet
 } from 'react-native'
 
 import { Alert } from 'molecules'
 
-export default function Layout ({ children, style }: Props) {
+export default function Layout ({ children, style, containerStyle }: Props) {
   const netInfo = useNetInfo()
 
   const { commonState, commonDispatch } = React.useContext<any>(StoresContext)
@@ -37,7 +39,7 @@ export default function Layout ({ children, style }: Props) {
   }, [netInfo, commonDispatch])
 
   return (
-    <SafeAreaView style={style}>
+    <SafeAreaView style={[styles.layout, style]}>
       {commonState.isOffline ? (
         <Alert>
           {'You\'re Offline'}
@@ -47,6 +49,7 @@ export default function Layout ({ children, style }: Props) {
       )}
       
       <ScrollView
+        style={[styles.container, containerStyle]}
         refreshControl={
           <RefreshControl
             refreshing={commonState.isRefreshing}
@@ -60,11 +63,13 @@ export default function Layout ({ children, style }: Props) {
   )
 }
 
-// const StyledLayout = Styled.SafeAreaView`
-//   flex: 1;
-//   background-color: ${props => props.theme.colors.gray};
-// `
-
-// const StyledLayoutContainer = Styled.ScrollView`
-//   padding: ${props => props.theme.sizes.base};
-// `
+const styles = StyleSheet.create({
+  layout: {
+    ...tw.flex1,
+    ...tw.bgGray100
+  },
+  
+  container: {
+    ...tw.p4
+  }
+})

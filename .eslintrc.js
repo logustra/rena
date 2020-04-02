@@ -71,7 +71,8 @@ module.exports = {
     }],
 
     '@typescript-eslint/no-use-before-define': ['error', {
-      'functions': false
+      'functions': false,
+      'variables': false
     }],
 
     '@typescript-eslint/member-delimiter-style': ['error', {

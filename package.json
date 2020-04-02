@@ -8,7 +8,9 @@
     "atomic-design",
     "ddd",
     "atomic-design-example",
-    "ddd-example"
+    "ddd-example",
+    "boilerplate",
+    "react-native-boilerplate"
   ],
   "repository": {
     "type": "git",
@@ -62,6 +64,7 @@
     "eslint-plugin-react-hooks": "^2.4.0",
     "husky": "^4.2.3",
     "metro-react-native-babel-preset": "^0.56.0",
+    "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-native": "^0.62.0",
     "react-native-dotenv": "^0.2.0",

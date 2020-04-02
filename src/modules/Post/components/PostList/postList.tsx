@@ -1,15 +1,19 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { tw } from 'react-native-tailwindcss'
 
 import { Props, PostListModel } from './postList.contracts'
 
 import { 
   View, 
-  Text 
+  Text,
+  StyleSheet
 } from 'react-native'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
+
+import { typography } from '@/styles'
 
 export default function PostList ({ withAuthor, data }: Props) {
   const navigation = useNavigation()
@@ -20,9 +24,13 @@ export default function PostList ({ withAuthor, data }: Props) {
         <Loading />
       ) : (
         data.data.map((item: PostListModel) => (
-          <Card key={`post-${item.id}`}>
+          <Card 
+            key={`post-${item.id}`}
+            style={[tw.mB4]}
+          >
             <React.Fragment>
               <Text 
+                style={[styles.title]}
                 onPress={() => navigation.navigate('post.detail', {
                   postId: item.id
                 })}
@@ -35,6 +43,7 @@ export default function PostList ({ withAuthor, data }: Props) {
                   Written by
 
                   <Text
+                    style={[tw.textBlue500]}
                     onPress={() => navigation.navigate('post.author', {
                       userId: item.userId
                     })}
@@ -46,7 +55,7 @@ export default function PostList ({ withAuthor, data }: Props) {
                 null
               )}
 
-              <Text>
+              <Text style={[tw.mT3]}>
                 {item.body}
               </Text>
             </React.Fragment>
@@ -57,23 +66,9 @@ export default function PostList ({ withAuthor, data }: Props) {
   )
 }
 
-// const StyledPostList = Styled.View`
-  
-// `
-
-// const StyledCard = Styled(Card)`
-//   ${margin.bottom[4]}
-// `
-
-// const StyledCardTitle = Styled.Text`
-//   ${font.size.base}
-//   ${font.family.lato.bold}
-// `
-
-// const StyledCardDescription = Styled.Text`
-//   ${margin.top[3]}
-// `
-
-// const StyledCardLink = Styled.Text`
-//   ${text.blue}
-// `
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: typography.lato.bold,
+    ...tw.textBase
+  }
+})

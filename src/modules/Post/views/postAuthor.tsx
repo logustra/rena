@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRoute } from '@react-navigation/native'
+import { tw } from 'react-native-tailwindcss'
 
 import {
   postAuthorInitState,
@@ -11,11 +12,16 @@ import { PostList } from '../components'
 
 import { StoresContext } from '@/stores'
 
-import { Text } from 'react-native'
+import { 
+  Text,
+  StyleSheet
+} from 'react-native'
 
 import { Loading } from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
+
+import { typography } from '@/styles'
 
 export default function PostAuthor () {
   const { userId }: any = useRoute().params
@@ -52,11 +58,11 @@ export default function PostAuthor () {
         ) : (
           <Card>
             <React.Fragment>
-              <Text>
+              <Text style={[styles.title]}>
                 {authorDetail.data.name}
               </Text>
               
-              <Text>
+              <Text style={[tw.mT3]}>
                 Email: {authorDetail.data.email} {'\n'}
                 Website: {authorDetail.data.website}
               </Text>
@@ -64,7 +70,7 @@ export default function PostAuthor () {
           </Card>
         )}
 
-        <Text>
+        <Text style={[styles.title, tw.mY4]}>
           Posted Article
         </Text>
 
@@ -81,21 +87,9 @@ export default function PostAuthor () {
   )
 }
 
-// const StyledArticle = Styled.Text`
-//   ${font.size.base}
-//   ${font.family.lato.bold}
-//   ${margin.bottom[4]}
-// `
-
-// const StyledCard = Styled(Card)`
-//   ${margin.bottom[4]}
-// `
-
-// const StyledCardTitle = Styled.Text`
-//   ${font.size.base}
-//   ${font.family.lato.bold}
-// `
-
-// const StyledCardDescription = Styled.Text`
-//   ${margin.top[3]}
-// `
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: typography.lato.bold,
+    ...tw.textBase
+  }
+})

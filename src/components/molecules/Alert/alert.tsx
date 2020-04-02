@@ -1,34 +1,40 @@
 import React from 'react'
+import { tw } from 'react-native-tailwindcss'
+import { rgba } from 'polished'
 
 import { Props } from './alert.contracts'
 
 import { 
   View,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native'
+
+import { 
+  colors,
+  opacity
+} from '@/styles'
 
 export default function Alert ({ children, style }: Props) {
   return (
-    <View style={style}>
-      <Text>
+    <View style={[styles.alert, style]}>
+      <Text style={[tw.textWhite]}>
         {children}
       </Text>
     </View>
   )
 }
 
-// const StyledAlert = Styled.View`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   z-index: 2;
-//   padding: 8px;
-//   background-color: rgba(0, 0, 0, 0.5);
-//   justify-content: center;
-//   align-items: center;
-// `
-
-// const StyledAlertText = Styled.Text`
-//   color: ${props => props.theme.colors.white};
-// `
+const styles = StyleSheet.create({
+  alert: {
+    backgroundColor: rgba(colors.black, Number(opacity[50])),
+    ...tw.absolute,
+    ...tw.top0,
+    ...tw.left0,
+    ...tw.wFull,
+    ...tw.z10,
+    ...tw.p2,
+    ...tw.justifyCenter,
+    ...tw.itemsCenter
+  }
+})
