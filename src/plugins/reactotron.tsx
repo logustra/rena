@@ -1,5 +1,6 @@
 
 import Reactotron, {
+  asyncStorage, 
   networking, 
   trackGlobalErrors,
   openInEditor
@@ -8,6 +9,7 @@ import Reactotron, {
 if (__DEV__) {
   Reactotron
     .configure({ name: 'Rena' })
+    .use(asyncStorage())
     .use(networking())
     .use(trackGlobalErrors())
     .use(openInEditor())

@@ -1,3 +1,7 @@
-import { wait } from './promise'
+import { wait } from './promises'
+import { useStorage } from './hooks'
 
-export { wait }
+export { 
+  wait,
+  useStorage
+}
