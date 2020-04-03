@@ -1,6 +1,6 @@
 export default {
   lato: {
-    regular: '\'Lato-Regular\'',
-    bold: '\'Lato-Bold\''
+    regular: 'Lato-Regular',
+    bold: 'Lato-Bold'
   }
 }
