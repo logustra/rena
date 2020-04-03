@@ -17,7 +17,10 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { Loading } from 'atoms'
+import { 
+  Divider,
+  Loading 
+} from 'atoms'
 import { Card } from 'molecules'
 import { Layout } from 'templates'
 
@@ -67,11 +70,13 @@ export default function PostAuthor () {
         ) : (
           <Card>
             <React.Fragment>
-              <Text style={[styles.title]}>
+              <Text style={[styles.authorTitle]}>
                 {authorDetail.data.name}
               </Text>
               
-              <Text style={[tw.mT3]}>
+              <Divider />
+
+              <Text>
                 Email: {authorDetail.data.email} {'\n'}
                 Website: {authorDetail.data.website}
               </Text>
@@ -79,7 +84,7 @@ export default function PostAuthor () {
           </Card>
         )}
 
-        <Text style={[styles.title, tw.mY4]}>
+        <Text style={[styles.articleTitle, tw.mY4]}>
           Posted Article
         </Text>
 
@@ -97,7 +102,12 @@ export default function PostAuthor () {
 }
 
 const styles = StyleSheet.create({
-  title: {
+  authorTitle: {
+    fontFamily: typography.lato.bold,
+    ...tw.textXl
+  },
+
+  articleTitle: {
     fontFamily: typography.lato.bold,
     ...tw.textBase
   }
