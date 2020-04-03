@@ -34,10 +34,25 @@ export default function PostDetail () {
   const navigation = useNavigation()
   const { commonState } = React.useContext<any>(StoresContext)
   
-  const [postDetailState, postDetailDispatch] = React.useReducer(postDetailMutations, postDetailInitState)
-  const { postDetail, postCommentList } = postDetailState
+  const [
+    postDetailState, 
+    postDetailDispatch
+  ] = React.useReducer(
+    postDetailMutations, 
+    postDetailInitState
+  )
+  const { 
+    postDetail, 
+    postCommentList 
+  } = postDetailState
 
-  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorMutations, postAuthorInitState)
+  const [
+    postAuthorState, 
+    postAuthorDispatch
+  ] = React.useReducer(
+    postAuthorMutations, 
+    postAuthorInitState
+  )
   const { authorDetail } = postAuthorState
 
   React.useEffect(() => {

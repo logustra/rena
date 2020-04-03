@@ -16,7 +16,13 @@ import { Layout } from 'templates'
 export default function PostIndex () {
   const { commonState } = React.useContext<any>(StoresContext)
 
-  const [postIndexState, postIndexDispatch] = React.useReducer(postIndexMutations, postIndexInitState)
+  const [
+    postIndexState, 
+    postIndexDispatch
+  ] = React.useReducer(
+    postIndexMutations,
+    postIndexInitState
+  )
   const { postList } = postIndexState
 
   React.useEffect(() => {

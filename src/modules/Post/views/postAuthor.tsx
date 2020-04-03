@@ -27,8 +27,17 @@ export default function PostAuthor () {
   const { userId }: any = useRoute().params
   const { commonState } = React.useContext<any>(StoresContext)
   
-  const [postAuthorState, postAuthorDispatch] = React.useReducer(postAuthorMutations, postAuthorInitState)
-  const { authorDetail, postAuthor } = postAuthorState
+  const [
+    postAuthorState, 
+    postAuthorDispatch
+  ] = React.useReducer(
+    postAuthorMutations, 
+    postAuthorInitState
+  )
+  const { 
+    authorDetail, 
+    postAuthor 
+  } = postAuthorState
 
   React.useEffect(() => {
     authorDetailRequest(postAuthorDispatch, userId)

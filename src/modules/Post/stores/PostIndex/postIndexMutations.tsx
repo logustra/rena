@@ -1,3 +1,5 @@
+import logger from 'use-reducer-logger'
+
 import * as types from './postIndexTypes'
 import { 
   PostIndexState, 
@@ -5,7 +7,7 @@ import {
   PostIndexAction 
 } from '../../contracts/postIndexContracts'
 
-export default (state: PostIndexState, action: PostIndexAction): any => {
+function postIndexMutations (state: PostIndexState, action: PostIndexAction): any {
   const { type, response } = action
   const { authorList, postList } = state
 
@@ -72,3 +74,5 @@ export default (state: PostIndexState, action: PostIndexAction): any => {
       }
   }
 }
+
+export default __DEV__ ? logger<any>(postIndexMutations) : postIndexMutations

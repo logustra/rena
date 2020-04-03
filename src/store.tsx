@@ -8,7 +8,13 @@ import {
 } from '@/stores'
 
 export default function Store ({ children }: Props) {
-  const [commonState, commonDispatch] = React.useReducer(commonMutations, commonInitState)
+  const [
+    commonState, 
+    commonDispatch
+  ] = React.useReducer(
+    commonMutations, 
+    commonInitState
+  )
 
   return (
     <Stores.Provider value={{ commonState, commonDispatch }}>

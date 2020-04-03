@@ -1,10 +1,12 @@
+import logger from 'use-reducer-logger'
+
 import * as types from './postAuthorTypes'
 import { 
   PostAuthorState, 
   PostAuthorAction 
 } from '../../contracts/postAuthorContracts'
 
-export default (state: PostAuthorState, action: PostAuthorAction): any => {
+function postAuthorMutations (state: PostAuthorState, action: PostAuthorAction): any {
   const { type, response } = action
   const { authorDetail, postAuthor } = state
 
@@ -68,3 +70,5 @@ export default (state: PostAuthorState, action: PostAuthorAction): any => {
       }
   }
 }
+
+export default __DEV__ ? logger<any>(postAuthorMutations) : postAuthorMutations

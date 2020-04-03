@@ -78,6 +78,7 @@
     "reactotron-react-native": "^4.0.3",
     "stylelint": "^13.2.1",
     "stylelint-react-native": "^2.2.0",
-    "typescript": "^3.8.2"
+    "typescript": "^3.8.2",
+    "use-reducer-logger": "^1.0.1"
   }
 }

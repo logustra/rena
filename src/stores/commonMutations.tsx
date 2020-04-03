@@ -1,13 +1,15 @@
+import logger from 'use-reducer-logger'
+
 import * as types from './commonTypes'
 import { 
   CommonState,
   CommonAction
 } from '@/contracts/commonContracts'
 
-export default (state: CommonState, action: CommonAction): any => {
+function commonMutations (state: CommonState, action: CommonAction): any {
   const { type, response } = action
 
-  switch(type) {
+  switch (type) {
     case types.SET_REFRESHING:
       return {
         ...state,
@@ -21,3 +23,5 @@ export default (state: CommonState, action: CommonAction): any => {
       }
   }
 }
+
+export default __DEV__ ? logger<any>(commonMutations) : commonMutations
