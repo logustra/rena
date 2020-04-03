@@ -54,6 +54,27 @@ module.exports = {
 
     // react
     'react/prop-types': 'off',
+    'react/jsx-equals-spacing': ['error', 'never'],
+    'react/jsx-closing-bracket-location': ['error', 'tag-aligned'],
+    'react/jsx-space-before-closing': ['error', 'always'],
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
+    'react/jsx-fragments': ['error', 'element'],
+
+    'react/jsx-max-props-per-line': ['error', {
+      'maximum': 1
+    }],
+
+    'react/jsx-curly-spacing': ['error', {
+      'when': 'never', 
+      'children': {
+        'when': 'never'
+      }
+    }],
+
+    'react/self-closing-comp': ['error', {
+      'component': true,
+      'html': true
+    }],
 
     // react-hooks
     'react-hooks/rules-of-hooks': 'error',
