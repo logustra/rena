@@ -1,5 +1,5 @@
 export interface Props {
-  children: JSX.Element,
+  children: React.ReactNode,
   style?: {}[],
   containerStyle?: {}[]
 }
