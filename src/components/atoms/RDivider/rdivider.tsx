@@ -6,14 +6,14 @@ import {
   StyleSheet
 } from 'react-native'
 
-export default function Divider () {
+export default function RDivider () {
   return (
-    <View style={[styles.divider]} />
+    <View style={[styles.rdivider]} />
   )
 }
 
 const styles = StyleSheet.create({
-  divider: {
+  rdivider: {
     ...tw.borderBlack,
     ...tw.borderB,
     ...tw.mY2

@@ -10,8 +10,8 @@ import { PostList } from '../components'
 
 import { StoresContext } from '@/stores'
 
-import { Loading } from 'atoms'
-import { Layout } from 'templates'
+import { RLoading } from 'atoms'
+import { RLayout } from 'templates'
 
 export default function PostIndex () {
   const { commonState } = React.useContext<any>(StoresContext)
@@ -46,15 +46,15 @@ export default function PostIndex () {
   }, [commonState.isRefreshing])
 
   return (
-    <Layout>
+    <RLayout>
       {postList.isFetching ? (
-        <Loading />
+        <RLoading />
       ) : (
         <PostList
           withAuthor={true}
           data={postList}
         />
       )}
-    </Layout>
+    </RLayout>
   )
 }

@@ -1,7 +1,7 @@
-import Alert from './Alert/alert'
-import Card from './Card/card'
+import RAlert from './RAlert/ralert'
+import RCard from './RCard/rcard'
 
 export { 
-  Alert,
-  Card
+  RAlert,
+  RCard
 }

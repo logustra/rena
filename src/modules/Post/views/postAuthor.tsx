@@ -18,11 +18,11 @@ import {
 } from 'react-native'
 
 import { 
-  Divider,
-  Loading 
+  RDivider,
+  RLoading 
 } from 'atoms'
-import { Card } from 'molecules'
-import { Layout } from 'templates'
+import { RCard } from 'molecules'
+import { RLayout } from 'templates'
 
 import { typography } from '@/styles'
 
@@ -63,25 +63,25 @@ export default function PostAuthor () {
   }, [commonState.isRefreshing])
 
   return (
-    <Layout>
+    <RLayout>
       <React.Fragment>
         {authorDetail.isFetching ? (
-          <Loading />
+          <RLoading />
         ) : (
-          <Card>
+          <RCard>
             <React.Fragment>
               <Text style={[styles.authorTitle]}>
                 {authorDetail.data.name}
               </Text>
               
-              <Divider />
+              <RDivider />
 
               <Text>
                 Email: {authorDetail.data.email} {'\n'}
                 Website: {authorDetail.data.website}
               </Text>
             </React.Fragment>
-          </Card>
+          </RCard>
         )}
 
         <Text style={[styles.articleTitle, tw.mY4]}>
@@ -89,7 +89,7 @@ export default function PostAuthor () {
         </Text>
 
         {postAuthor.isFetching ? (
-          <Loading />
+          <RLoading />
         ) : (
           <PostList
             withAuthor={false}
@@ -97,7 +97,7 @@ export default function PostAuthor () {
           />
         )}
       </React.Fragment>
-    </Layout>
+    </RLayout>
   )
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 import { rgba } from 'polished'
 
-import { Props } from './alert.contracts'
+import { Props } from './ralert.contracts'
 
 import { 
   View,
@@ -15,9 +15,9 @@ import {
   opacity
 } from '@/styles'
 
-export default function Alert ({ children, style }: Props) {
+export default function RAlert ({ children, style }: Props) {
   return (
-    <View style={[styles.alert, style]}>
+    <View style={[styles.ralert, style]}>
       <Text style={[tw.textWhite]}>
         {children}
       </Text>
@@ -26,7 +26,7 @@ export default function Alert ({ children, style }: Props) {
 }
 
 const styles = StyleSheet.create({
-  alert: {
+  ralert: {
     backgroundColor: rgba(colors.black, Number(opacity[50])),
     ...tw.absolute,
     ...tw.top0,

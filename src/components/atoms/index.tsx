@@ -1,7 +1,7 @@
-import Divider from './Divider/divider'
-import Loading from './Loading/loading'
+import RDivider from './RDivider/rdivider'
+import RLoading from './RLoading/rloading'
 
 export { 
-  Divider,
-  Loading
+  RDivider,
+  RLoading
 }

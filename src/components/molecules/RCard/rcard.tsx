@@ -1,23 +1,23 @@
 import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props } from './card.contracts'
+import { Props } from './rcard.contracts'
 
 import { 
   View,
   StyleSheet
 } from 'react-native'
 
-export default function Card ({ children, style }: Props) {
+export default function RCard ({ children, style }: Props) {
   return (
-    <View style={[styles.card, style]}>
+    <View style={[styles.rcard, style]}>
       {children}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  card: {
+  rcard: {
     ...tw.bgWhite,
     ...tw.p4,
     ...tw.rounded

@@ -1,3 +1,3 @@
-import Layout from './Layout/layout'
+import RLayout from './RLayout/rlayout'
 
-export { Layout }
+export { RLayout }

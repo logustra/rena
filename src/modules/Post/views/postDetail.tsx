@@ -23,9 +23,9 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { Loading } from 'atoms'
-import { Card } from 'molecules'
-import { Layout } from 'templates'
+import { RLoading } from 'atoms'
+import { RCard } from 'molecules'
+import { RLayout } from 'templates'
 
 import { typography } from '@/styles'
 
@@ -86,12 +86,12 @@ export default function PostDetail () {
   }, [commonState.isRefreshing])
 
   return (
-    <Layout>
+    <RLayout>
       <React.Fragment>
         {postDetail.isFetching ? (
-          <Loading />
+          <RLoading />
         ) : (
-          <Card>
+          <RCard>
             <React.Fragment>
               <Text style={[styles.postTitle]}>
                 {postDetail.data.title}
@@ -115,7 +115,7 @@ export default function PostDetail () {
                 {postDetail.data.body}
               </Text>
             </React.Fragment>
-          </Card>
+          </RCard>
         )}
 
         <View>
@@ -124,15 +124,15 @@ export default function PostDetail () {
           </Text>
 
           {postCommentList.isFetching ? (
-            <Loading />
+            <RLoading />
           ) : (
             postCommentList.data.map((item: PostCommentModel) => (
-              <Card 
+              <RCard 
                 key={`comment-${item.id}`}
                 style={[tw.mB4]}
               >
                 <React.Fragment>
-                  <Text style={[styles.cardTitle]}>
+                  <Text style={[styles.rcardTitle]}>
                     {item.name}
                   </Text>
 
@@ -140,12 +140,12 @@ export default function PostDetail () {
                     {item.body}
                   </Text>
                 </React.Fragment>
-              </Card>
+              </RCard>
             ))
           )}
         </View>
       </React.Fragment>
-    </Layout>
+    </RLayout>
   )
 }
 
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     ...tw.textXl
   },
 
-  cardTitle: {
+  rcardTitle: {
     fontFamily: typography.lato.bold,
     ...tw.textBase
   },

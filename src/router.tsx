@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import postRoutes from '@@/Post/router'
 
-import { Loading } from 'atoms'
+import { RLoading } from 'atoms'
 
 const routes = [
   ...postRoutes
@@ -13,7 +13,7 @@ const Stack = createStackNavigator()
 
 export default function Router () {
   return (
-    <React.Suspense fallback={<Loading />}>
+    <React.Suspense fallback={<RLoading />}>
       <Stack.Navigator 
         initialRouteName="post.index"
         headerMode="screen"

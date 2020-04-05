@@ -10,8 +10,8 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { Loading } from 'atoms'
-import { Card } from 'molecules'
+import { RLoading } from 'atoms'
+import { RCard } from 'molecules'
 
 import { typography } from '@/styles'
 
@@ -21,10 +21,10 @@ export default function PostList ({ withAuthor, data }: Props) {
   return (
     <View>
       {data.isFetching ? (
-        <Loading />
+        <RLoading />
       ) : (
         data.data.map((item: PostListModel) => (
-          <Card 
+          <RCard 
             key={`post-${item.id}`}
             style={[tw.mB4]}
           >
@@ -59,7 +59,7 @@ export default function PostList ({ withAuthor, data }: Props) {
                 {item.body}
               </Text>
             </React.Fragment>
-          </Card>
+          </RCard>
         ))
       )}
     </View>

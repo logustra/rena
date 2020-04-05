@@ -2,7 +2,7 @@ import React from 'react'
 import { useNetInfo } from '@react-native-community/netinfo'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props } from './layout.contracts'
+import { Props } from './rlayout.contracts'
 
 import {
   StoresContext,
@@ -19,9 +19,9 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { Alert } from 'molecules'
+import { RAlert } from 'molecules'
 
-export default function Layout ({ children, style, containerStyle }: Props) {
+export default function RLayout ({ children, style, containerStyle }: Props) {
   const netInfo = useNetInfo()
 
   const { commonState, commonDispatch } = React.useContext<any>(StoresContext)
@@ -39,11 +39,11 @@ export default function Layout ({ children, style, containerStyle }: Props) {
   }, [netInfo, commonDispatch])
 
   return (
-    <SafeAreaView style={[styles.layout, style]}>
+    <SafeAreaView style={[styles.rlayout, style]}>
       {commonState.isOffline ? (
-        <Alert>
+        <RAlert>
           {'You\'re Offline'}
-        </Alert>
+        </RAlert>
       ) : (
         null
       )}
@@ -64,7 +64,7 @@ export default function Layout ({ children, style, containerStyle }: Props) {
 }
 
 const styles = StyleSheet.create({
-  layout: {
+  rlayout: {
     ...tw.flex1,
     ...tw.bgGray100
   },
