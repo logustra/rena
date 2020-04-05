@@ -48,6 +48,7 @@ module.exports = {
     'template-curly-spacing': ['error', 'never'],
     'space-in-parens': ['error', 'never'],
     'space-before-function-paren': ['error', 'always'],
+    'jsx-quotes': ['error', 'prefer-double'],
     'indent': ['error', 2, {
       'SwitchCase': 1
     }],
