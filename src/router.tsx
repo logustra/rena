@@ -14,11 +14,7 @@ const Stack = createStackNavigator()
 export default function Router () {
   return (
     <React.Suspense fallback={<RLoading />}>
-      <Stack.Navigator 
-        initialRouteName="post.index"
-        headerMode="screen"
-      >
-        
+      <Stack.Navigator>
         {routes.map((item: any, index: number) => (
           <Stack.Screen
             key={`route-${index}`}
