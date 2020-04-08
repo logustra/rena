@@ -57,9 +57,12 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-equals-spacing': ['error', 'never'],
     'react/jsx-closing-bracket-location': ['error', 'tag-aligned'],
-    'react/jsx-space-before-closing': ['error', 'always'],
     'react/jsx-first-prop-new-line': ['error', 'multiline'],
     'react/jsx-fragments': ['error', 'element'],
+
+    'react/jsx-tag-spacing': ['error', {
+      'beforeSelfClosing': 'always'
+    }],
 
     'react/jsx-max-props-per-line': ['error', {
       'maximum': 1
