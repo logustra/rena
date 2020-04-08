@@ -28,37 +28,35 @@ export default function PostList ({ withAuthor, data }: Props) {
             key={`post-${item.id}`}
             style={[tw.mB4]}
           >
-            <React.Fragment>
-              <Text 
-                style={[styles.title]}
-                onPress={() => navigation.navigate('post.detail', {
-                  postId: item.id
-                })}
-              >
-                {item.title}
-              </Text>
+            <Text
+              style={[styles.title]}
+              onPress={() => navigation.navigate('post.detail', {
+                postId: item.id
+              })}
+            >
+              {item.title}
+            </Text>
 
-              {withAuthor && item.author ? (
-                <Text>
-                  Written by
+            {withAuthor && item.author ? (
+              <Text>
+                Written by
 
-                  <Text
-                    style={[tw.textBlue500]}
-                    onPress={() => navigation.navigate('post.author', {
-                      userId: item.userId
-                    })}
-                  >
-                    {' ' + item.author.name}
-                  </Text>
+                <Text
+                  style={[tw.textBlue500]}
+                  onPress={() => navigation.navigate('post.author', {
+                    userId: item.userId
+                  })}
+                >
+                  {' ' + item.author.name}
                 </Text>
-              ) : (
-                null
-              )}
-
-              <Text style={[tw.mT3]}>
-                {item.body}
               </Text>
-            </React.Fragment>
+            ) : (
+              null
+            )}
+
+            <Text style={[tw.mT3]}>
+              {item.body}
+            </Text>
           </RCard>
         ))
       )}

@@ -25,7 +25,10 @@ import {
 
 import { RLoading } from 'atoms'
 import { RCard } from 'molecules'
-import { RLayout } from 'templates'
+import { 
+  RContainer,
+  RLayout 
+} from 'templates'
 
 import { typography } from '@/styles'
 
@@ -87,34 +90,32 @@ export default function PostDetail () {
 
   return (
     <RLayout>
-      <React.Fragment>
+      <RContainer>
         {postDetail.isFetching ? (
           <RLoading />
         ) : (
           <RCard>
-            <React.Fragment>
-              <Text style={[styles.postTitle]}>
-                {postDetail.data.title}
-              </Text>
+            <Text style={[styles.postTitle]}>
+              {postDetail.data.title}
+            </Text>
 
-              <Text>
-                Written by
-                
-                <Text
-                  style={[tw.textBlue500]}
-                  onPress={() => navigation.navigate('post.author', {
-                    userId: postDetail.data.userId,
-                    title: authorDetail.data.name
-                  })}
-                >
-                  {' ' + authorDetail.data.name}
-                </Text>
+            <Text>
+              Written by
+              
+              <Text
+                style={[tw.textBlue500]}
+                onPress={() => navigation.navigate('post.author', {
+                  userId: postDetail.data.userId,
+                  title: authorDetail.data.name
+                })}
+              >
+                {' ' + authorDetail.data.name}
               </Text>
+            </Text>
 
-              <Text style={[tw.mT3]}>
-                {postDetail.data.body}
-              </Text>
-            </React.Fragment>
+            <Text style={[tw.mT3]}>
+              {postDetail.data.body}
+            </Text>
           </RCard>
         )}
 
@@ -131,20 +132,18 @@ export default function PostDetail () {
                 key={`comment-${item.id}`}
                 style={[tw.mB4]}
               >
-                <React.Fragment>
-                  <Text style={[styles.rcardTitle]}>
-                    {item.name}
-                  </Text>
+                <Text style={[styles.rcardTitle]}>
+                  {item.name}
+                </Text>
 
-                  <Text style={[tw.mT3]}>
-                    {item.body}
-                  </Text>
-                </React.Fragment>
+                <Text style={[tw.mT3]}>
+                  {item.body}
+                </Text>
               </RCard>
             ))
           )}
         </View>
-      </React.Fragment>
+      </RContainer>
     </RLayout>
   )
 }

@@ -22,7 +22,10 @@ import {
   RLoading 
 } from 'atoms'
 import { RCard } from 'molecules'
-import { RLayout } from 'templates'
+import { 
+  RContainer,
+  RLayout 
+} from 'templates'
 
 import { typography } from '@/styles'
 
@@ -64,23 +67,21 @@ export default function PostAuthor () {
 
   return (
     <RLayout>
-      <React.Fragment>
+      <RContainer>
         {authorDetail.isFetching ? (
           <RLoading />
         ) : (
           <RCard>
-            <React.Fragment>
-              <Text style={[styles.authorTitle]}>
-                {authorDetail.data.name}
-              </Text>
-              
-              <RDivider />
+            <Text style={[styles.authorTitle]}>
+              {authorDetail.data.name}
+            </Text>
 
-              <Text>
-                Email: {authorDetail.data.email} {'\n'}
-                Website: {authorDetail.data.website}
-              </Text>
-            </React.Fragment>
+            <RDivider />
+
+            <Text>
+              Email: {authorDetail.data.email} {'\n'}
+              Website: {authorDetail.data.website}
+            </Text>
           </RCard>
         )}
 
@@ -96,7 +97,7 @@ export default function PostAuthor () {
             data={postAuthor}
           />
         )}
-      </React.Fragment>
+      </RContainer>
     </RLayout>
   )
 }
