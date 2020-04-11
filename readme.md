@@ -46,3 +46,26 @@ $ pod install
 $ yarn ios
 ```
 
+## How to Rename
+```bash
+# add dependency react-native-rename
+$ yarn global add react-native-rename
+
+# rename rena to myApp
+$ react-native-rename myApp
+```
+
+## How to Create Folder
+A guide how to create a folder using `create-cli`
+
+### Components
+```bash
+# create atoms component and give it name loading
+$ node create atoms loading
+```
+
+### Modules
+```bash
+# create new module and give it name home
+$ node create modules home
+```
