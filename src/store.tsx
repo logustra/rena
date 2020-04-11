@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Props } from '@/contracts/storeContracts'
+import { Props } from '@/typings/storeTypings'
 import {
   StoresContext as Stores,
   commonInitState,

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props, PostListModel } from './postList.contracts'
+import { Props, PostListModel } from './postList.typings'
 
 import { 
   View, 

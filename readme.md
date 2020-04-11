@@ -58,14 +58,14 @@ $ react-native-rename myApp
 ## How to Create Folder
 A guide how to create a folder using `create-cli`
 
-### Components
+### Component
 ```bash
-# create atoms component and give it name loading
-$ node create atoms loading
+# create atom component and give it name loading
+$ node create atom loading
 ```
 
-### Modules
+### Page
 ```bash
-# create new module and give it name home
-$ node create modules home
+# create new page and give it name home
+$ node create page home
 ```

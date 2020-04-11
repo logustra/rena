@@ -1,7 +1,7 @@
 import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props } from './rcontainer.contracts'
+import { Props } from './rcontainer.typings'
 
 import {
   StoresContext,

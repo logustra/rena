@@ -5,11 +5,11 @@ const camelCase = require('camelcase');
 const pkg = require('../package.json') 
 
 const COMMANDS = [
-  'atoms', 
-  'molecules', 
-  'organisms', 
-  'templates', 
-  'modules'
+  'atom', 
+  'molecule', 
+  'organism', 
+  'template', 
+  'page'
 ]
 
 let name = 'example'
@@ -17,29 +17,29 @@ let name = 'example'
 const templates = {
   components: {
     default: './create/templates/components/rexample.tsx',
-    contracts: './create/templates/components/rexample.contracts.tsx'
+    typings: './create/templates/components/rexample.typings.tsx'
   },
 
-  modules: {
-    components: './create/templates/modules/components/index.tsx',
-    constants: './create/templates/modules/constants/exampleConstants.tsx',
-    contracts: './create/templates/modules/contracts/exampleIndexContracts.tsx',
+  pages: {
+    components: './create/templates/pages/components/index.tsx',
+    constants: './create/templates/pages/constants/exampleConstants.tsx',
+    typings: './create/templates/pages/typings/exampleIndexTypings.tsx',
 
     services: [
-      './create/templates/modules/services/exampleService.tsx', 
-      './create/templates/modules/services/index.tsx'
+      './create/templates/pages/services/exampleService.tsx', 
+      './create/templates/pages/services/index.tsx'
     ],
 
     stores: [
-      './create/templates/modules/stores/exampleIndexActions.tsx', 
-      './create/templates/modules/stores/exampleIndexMutations.tsx', 
-      './create/templates/modules/stores/exampleIndexState.tsx', 
-      './create/templates/modules/stores/exampleIndexTypes.tsx', 
-      './create/templates/modules/stores/index.tsx'
+      './create/templates/pages/stores/exampleIndexActions.tsx', 
+      './create/templates/pages/stores/exampleIndexMutations.tsx', 
+      './create/templates/pages/stores/exampleIndexState.tsx', 
+      './create/templates/pages/stores/exampleIndexTypes.tsx', 
+      './create/templates/pages/stores/index.tsx'
     ],
 
-    views: './create/templates/modules/views/exampleIndex.tsx',
-    router: './create/templates/modules/router.tsx'
+    views: './create/templates/pages/views/exampleIndex.tsx',
+    router: './create/templates/pages/router.tsx'
   }
 }
 
@@ -54,7 +54,7 @@ const log = (folder, name, status) => {
 }
 
 const createFolder = (type, folder) => {
-  let pathModule = ''
+  let pathPage = ''
   let path = ''
 
   switch(type) {
@@ -63,25 +63,25 @@ const createFolder = (type, folder) => {
       if (!checkPath(path)) shell.mkdir(path)
       break
       
-    case 'modules': 
+    case 'pages': 
       if (!folder) {
-        path = `./src/modules/${camelCase(name, { pascalCase: true })}`
+        path = `./src/pages/${camelCase(name, { pascalCase: true })}`
         if (!checkPath(path)) shell.mkdir(path)
 
       } else {
         if (folder !== 'stores') {
-          pathModule = `./src/${type}/${camelCase(name, { pascalCase: true })}`
-          path = `${pathModule}/${folder}`
-          if (!checkPath(pathModule)) shell.mkdir(pathModule)
-          if (checkPath(pathModule) && !checkPath(path)) shell.mkdir(path)
+          pathPage = `./src/${type}/${camelCase(name, { pascalCase: true })}`
+          path = `${pathPage}/${folder}`
+          if (!checkPath(pathPage)) shell.mkdir(pathPage)
+          if (checkPath(pathPage) && !checkPath(path)) shell.mkdir(path)
           
         } else {
-          pathModule = `./src/modules/${camelCase(name, { pascalCase: true })}`
-          pathStores = `${pathModule}/stores`
+          pathPage = `./src/pages/${camelCase(name, { pascalCase: true })}`
+          pathStores = `${pathPage}/stores`
           path = `${pathStores}/${camelCase(name, { pascalCase: true })}Index`
-          if (!checkPath(pathModule)) shell.mkdir(pathModule)
+          if (!checkPath(pathPage)) shell.mkdir(pathPage)
           if (!checkPath(pathStores)) shell.mkdir(pathStores)
-          if (checkPath(pathModule) && checkPath(pathStores) && !checkPath(path)) shell.mkdir(path)
+          if (checkPath(pathPage) && checkPath(pathStores) && !checkPath(path)) shell.mkdir(path)
         }
       }
       break
@@ -106,14 +106,14 @@ const createComponent = {
     }
   },
 
-  contracts: folderName => {
+  typings: folderName => {
     const folder = `${createFolder('components', folderName)}/`
-    const file = `r${camelCase(name)}.contracts.tsx`
+    const file = `r${camelCase(name)}.typings.tsx`
     const path = folder + file
     
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.components.contracts} > ${path}`)
+      shell.exec(`cat ${templates.components.typings} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -124,13 +124,13 @@ const createComponent = {
 
 const createModule = {
   components: () => {
-    const folder = `${createFolder('modules', 'components')}/`
+    const folder = `${createFolder('pages', 'components')}/`
     const file = 'index.tsx'
     const path = folder + file
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.modules.components} > ${path}`)
+      shell.exec(`cat ${templates.pages.components} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -139,13 +139,13 @@ const createModule = {
   },
 
   constants: () => {
-    const folder = `${createFolder('modules', 'constants')}/`
+    const folder = `${createFolder('pages', 'constants')}/`
     const file = `${camelCase(name)}Constants.tsx`
     const path = folder + file
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.modules.constants} > ${path}`)
+      shell.exec(`cat ${templates.pages.constants} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -153,14 +153,14 @@ const createModule = {
     }
   },
 
-  contracts: () => {
-    const folder = `${createFolder('modules', 'contracts')}/`
-    const file = `${camelCase(name)}IndexContracts.tsx`
+  typings: () => {
+    const folder = `${createFolder('pages', 'typings')}/`
+    const file = `${camelCase(name)}IndexTypings.tsx`
     const path = folder + file
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.modules.constants} > ${path}`)
+      shell.exec(`cat ${templates.pages.constants} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -169,7 +169,7 @@ const createModule = {
   },
 
   services: () => {
-    const folder = `${createFolder('modules', 'services')}/`
+    const folder = `${createFolder('pages', 'services')}/`
     const file = [
       `${camelCase(name)}Service.tsx`,
       'index.tsx'
@@ -182,20 +182,20 @@ const createModule = {
     if (!checkPath(path)) {
       shell.touch(path)
 
-      for (const index in templates.modules.services) {
-        shell.exec(`cat ${templates.modules.services[index]} > ${path[index]}`)
+      for (const index in templates.pages.services) {
+        shell.exec(`cat ${templates.pages.services[index]} > ${path[index]}`)
 
         log(folder, file[index], true)
       }
     } else {
-      for (const index in templates.modules.services) {
+      for (const index in templates.pages.services) {
         log(folder, file[index], false)
       }
     }
   },
 
   stores: () => {
-    const folder = `${createFolder('modules', 'stores')}/`
+    const folder = `${createFolder('pages', 'stores')}/`
     const file = [
       `${camelCase(name)}IndexActions.tsx`,
       `${camelCase(name)}IndexMutations.tsx`,
@@ -211,26 +211,26 @@ const createModule = {
     if (!checkPath(path)) {
       shell.touch(path)
 
-      for (const index in templates.modules.stores) {
-        shell.exec(`cat ${templates.modules.stores[index]} > ${path[index]}`)
+      for (const index in templates.pages.stores) {
+        shell.exec(`cat ${templates.pages.stores[index]} > ${path[index]}`)
 
         log(folder, file[index], true)
       }
     } else {
-      for (const index in templates.modules.stores) {
+      for (const index in templates.pages.stores) {
         log(folder, file[index], false)
       }
     }
   },
 
   views: () => {
-    const folder = `${createFolder('modules', 'views')}/`
+    const folder = `${createFolder('pages', 'views')}/`
     const file = `${camelCase(name)}Index.tsx`
     const path = folder + file
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.modules.constants} > ${path}`)
+      shell.exec(`cat ${templates.pages.constants} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -239,13 +239,13 @@ const createModule = {
   },
 
   router: () => {
-    const folder = `${createFolder('modules')}/`
+    const folder = `${createFolder('pages')}/`
     const file = 'router.tsx'
     const path = folder + file
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.modules.router} > ${path}`)
+      shell.exec(`cat ${templates.pages.router} > ${path}`)
 
       log(folder, file, true)
     } else {
@@ -255,40 +255,40 @@ const createModule = {
 }
 
 const actions = {
-  'atoms': componentName => {
+  'atom': componentName => {
     name = componentName
 
     createComponent.default('atoms')
-    createComponent.contracts('atoms')
+    createComponent.typings('atoms')
   },
 
-  'molecules': componentName => {
+  'molecule': componentName => {
     name = componentName
 
     createComponent.default('molecules')
-    createComponent.contracts('molecules')
+    createComponent.typings('molecules')
   },
 
-  'organisms': componentName => {
+  'organism': componentName => {
     name = componentName
 
     createComponent.default('organisms')
-    createComponent.contracts('organisms')
+    createComponent.typings('organisms')
   },
 
-  'templates': componentName => {
+  'template': componentName => {
     name = componentName
 
     createComponent.default('templates')
-    createComponent.contracts('templates')
+    createComponent.typings('templates')
   },
 
-  'modules': moduleName => {
+  'page': moduleName => {
     name = moduleName
 
     createModule.components()
     createModule.constants()
-    createModule.contracts()
+    createModule.typings()
     createModule.services()
     createModule.stores()
     createModule.views()
@@ -298,11 +298,11 @@ const actions = {
 
 program
   .version(pkg.version)
-  .option('atoms <required>', 'option to generate atoms component')
-  .option('molecules <required>', 'option to generate molecules component')
-  .option('organisms <required>', 'option to generate orgnisms component')
-  .option('templates <required>', 'option to generate templates component')
-  .option('modules <required>', 'option to generate module')
+  .option('atom <required>', 'option to generate atoms component')
+  .option('molecule <required>', 'option to generate molecules component')
+  .option('organism <required>', 'option to generate orgnisms component')
+  .option('template <required>', 'option to generate templates component')
+  .option('page <required>', 'option to generate module')
   .action(args => {
     COMMANDS.map(command => {
       if (args[command]) actions[command](args[command])

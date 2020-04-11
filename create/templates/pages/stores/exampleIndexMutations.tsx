@@ -5,7 +5,7 @@ import * as types from './exampleIndexTypes'
 import { 
   ExampleIndexState,
   ExampleIndexAction 
-} from '../contracts/exampleIndexContracts'
+} from '../typings/exampleIndexTypings'
 
 function exampleIndexMutations (state: ExampleIndexState, action: ExampleIndexAction) {
   const { type, response } = action

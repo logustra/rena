@@ -2,7 +2,7 @@ import React from 'react'
 import { useNetInfo } from '@react-native-community/netinfo'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props } from './rlayout.contracts'
+import { Props } from './rlayout.typings'
 
 import {
   StoresContext,

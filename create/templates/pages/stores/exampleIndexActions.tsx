@@ -1,6 +1,6 @@
 import * as types from './exampleIndexTypes'
 import { API_EXAMPLE } from '../constants/exampleConstants'
-import { ExampleIndexModel } from '../contracts/exampleIndexContracts'
+import { ExampleIndexModel } from '../typings/exampleIndexTypings'
 import { exampleService } from '../services'
 
 export async function exampleRequest (dispatch: Function) {

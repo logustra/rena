@@ -2,7 +2,7 @@ import React from 'react'
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { tw } from 'react-native-tailwindcss'
 
-import { PostCommentModel } from '../contracts/postDetailContracts'
+import { PostCommentModel } from '../typings/postDetailTypings'
 import {
   postDetailInitState,
   postDetailMutations,

@@ -2,7 +2,7 @@ import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 import { rgba } from 'polished'
 
-import { Props } from './ralert.contracts'
+import { Props } from './ralert.typings'
 
 import { 
   View,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 
-import { Props } from './rcard.contracts'
+import { Props } from './rcard.typings'
 
 import { 
   View,
