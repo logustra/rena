@@ -298,10 +298,10 @@ const actions = {
 
 program
   .version(pkg.version)
-  .option('atom <required>', 'option to generate atoms component')
-  .option('molecule <required>', 'option to generate molecules component')
-  .option('organism <required>', 'option to generate orgnisms component')
-  .option('template <required>', 'option to generate templates component')
+  .option('atom <required>', 'option to generate atom component')
+  .option('molecule <required>', 'option to generate molecule component')
+  .option('organism <required>', 'option to generate orgnism component')
+  .option('template <required>', 'option to generate template component')
   .option('page <required>', 'option to generate module')
   .action(args => {
     COMMANDS.map(command => {
