@@ -160,7 +160,7 @@ const createModule = {
 
     if (!checkPath(path)) {
       shell.touch(path)
-      shell.exec(`cat ${templates.pages.constants} > ${path}`)
+      shell.exec(`cat ${templates.pages.typings} > ${path}`)
 
       log(folder, file, true)
     } else {
