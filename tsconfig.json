@@ -49,6 +49,7 @@
     "husky.config.js",
     "metro.config.js",
     "react-native.config.js",
-    "stylelint.config.js"
+    "stylelint.config.js",
+    "tailwind.config.js"
   ]
 }
