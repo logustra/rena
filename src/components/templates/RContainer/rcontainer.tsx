@@ -17,7 +17,10 @@ import {
 } from 'react-native'
 
 export default function RContainer ({ children, style }: Props) {
-  const { commonState, commonDispatch } = React.useContext<any>(StoresContext)
+  const { 
+    commonState, 
+    commonDispatch 
+  } = React.useContext<any>(StoresContext)
   
   function onRefresh () {
     setRefreshing(commonDispatch, true)

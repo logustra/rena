@@ -19,7 +19,10 @@ import { RAlert } from 'molecules'
 export default function RLayout ({ children, style }: Props) {
   const netInfo = useNetInfo()
 
-  const { commonState, commonDispatch } = React.useContext<any>(StoresContext)
+  const { 
+    commonState, 
+    commonDispatch 
+  } = React.useContext<any>(StoresContext)
 
   React.useEffect(() => {
     if (netInfo.details) {
