@@ -28,7 +28,7 @@ module.exports = {
         extensions: ['*', '.js', '.ts', '.tsx', '.json'],
         alias: {
           '@': './src',
-          '@@': './src/pages',
+          '@@': './src/modules',
           'atoms': './src/components/atoms',
           'molecules': './src/components/molecules',
           'organisms': './src/components/organisms',
