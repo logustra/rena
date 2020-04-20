@@ -1,7 +1,7 @@
 {
   "name": "rena",
   "version": "1.0.0",
-  "description": "a Blog build with React Native, Typescript, Atomic Design & DDD",
+  "description": "A highly scalable react native boilerplate",
   "keywords": [
     "react-native",
     "typescript",
