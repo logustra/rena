@@ -45,7 +45,7 @@ export default function PostList ({ withAuthor, data }: Props) {
                 Written by
 
                 <Text
-                  style={[tw.textBlue500]}
+                  style={[tw.textBlue700]}
                   onPress={() => navigation.navigate('post.author', {
                     userId: item.userId
                   })}

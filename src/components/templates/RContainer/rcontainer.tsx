@@ -8,7 +8,7 @@ import {
   setRefreshing
 } from '@/stores'
 
-import { wait } from '@/libs'
+import { wait } from '@/utils'
 
 import {
   ScrollView,

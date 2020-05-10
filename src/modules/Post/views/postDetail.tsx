@@ -103,7 +103,7 @@ export default function PostDetail () {
               Written by
               
               <Text
-                style={[tw.textBlue500]}
+                style={[tw.textBlue700]}
                 onPress={() => navigation.navigate('post.author', {
                   userId: postDetail.data.userId,
                   title: authorDetail.data.name
