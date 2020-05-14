@@ -1,7 +1,38 @@
-## Rena
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Flogustra%2Frena.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Flogustra%2Frena?ref=badge_shield)
+<div align="center">
+  <h2>Rena</h2>
 
-Read [documentation](https://github.com/logustra/7ad)
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Flogustra%2Frena?ref=badge_shield">
+    <img 
+      src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Flogustra%2Frena.svg?type=shield&color=brightgreen" 
+      alt="FOSSA Status"
+    >
+  </a>
+
+  <a href="https://standardjs.com">
+    <img 
+      src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat" 
+      alt="Code Style"
+    >
+  </a>
+
+  <a href="https://github.com/ralali/agent_mitra_cms/releases/tag/v1.0.0">
+    <img 
+      src="https://img.shields.io/static/v1.svg?label=version&message=v1.0.0&style=flat&color=brightgreen" 
+      alt="Version"
+    >
+  </a>
+
+  <a href="https://conventionalcommits.org">
+    <img 
+      src="https://img.shields.io/badge/conventional%20commits-1.0.0-brightgreen.svg" 
+      alt="Conventional Commits"
+    >
+  </a>
+</div>
+<br />
+
+## Learn 7AD
+Learn the design patterns [here](https://github.com/logustra/7ad)
 
 ## Requirement
   - [node.js](http://nodejs.org/)
@@ -43,6 +74,9 @@ $ cd ios
 
 # instal dependencies
 $ pod install
+
+# back to previous folder
+$ cd ..
 
 # build ios and open emulator
 $ yarn ios
