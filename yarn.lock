@@ -6270,6 +6270,11 @@ react-native-screens@^2.2.0:
   dependencies:
     debounce "^1.2.0"
 
+react-native-splash-screen@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.2.0.tgz#d47ec8557b1ba988ee3ea98d01463081b60fff45"
+  integrity sha512-Ls9qiNZzW/OLFoI25wfjjAcrf2DZ975hn2vr6U9gyuxi2nooVbzQeFoQS5vQcbCt9QX5NY8ASEEAtlLdIa6KVg==
+
 react-native-tailwindcss@^1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/react-native-tailwindcss/-/react-native-tailwindcss-1.1.9.tgz#5a1425dd43b9ee71870e349a68041080cc80930a"

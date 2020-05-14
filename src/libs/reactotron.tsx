@@ -4,7 +4,7 @@ import Reactotron from 'reactotron-react-native'
 
 if (__DEV__) {
   Reactotron
-    .configure({ name: 'Venka' })
+    .configure({ name: 'Rena' })
     .setAsyncStorageHandler(AsyncStorage)
     .useReactNative()
     .connect()
