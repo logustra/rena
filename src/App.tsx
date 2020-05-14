@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import SplashScreen from 'react-native-splash-screen'
 
 import Store from './store'
-import Routes from './router'
+import Router from './router'
 
 export default function App () {
   React.useEffect(() => {
@@ -13,7 +13,7 @@ export default function App () {
   return (
     <Store>
       <NavigationContainer>
-        <Routes />
+        <Router />
       </NavigationContainer>
     </Store>
   )

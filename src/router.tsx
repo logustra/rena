@@ -1,13 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import postRoutes from '@@/Post/router'
+import routes from './routes'
 
 import { RLoading } from 'atoms'
-
-const routes = [
-  ...postRoutes
-]
 
 const Stack = createStackNavigator()
 
