@@ -2,10 +2,8 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { tw } from 'react-native-tailwindcss'
 
-import { 
-  Props, 
-  PostListModel 
-} from './postList.typings'
+import { Props } from './postList.typings'
+import { PostsDataModel } from '../../typings/postsTypings'
 
 import { 
   View, 
@@ -13,20 +11,27 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { RLoading } from 'atoms'
+import { 
+  RError,
+  RLoading 
+} from 'atoms'
 import { RCard } from 'molecules'
 
 import { typography } from '@/styles'
 
-export default function PostList ({ withAuthor, data }: Props) {
+export default function PostList ({ withAuthor, users, data }: Props) {
   const navigation = useNavigation()
+
+  function handleUser (userId: number): any {
+    if (users) return users.data.find(item => item.id === userId)
+  }
   
   return (
     <View>
-      {data.isFetching ? (
-        <RLoading />
-      ) : (
-        data.data.map((item: PostListModel) => (
+      {data.isFetching && <RLoading />}
+      {data.isError && <RError />}
+      {data.data.length !== 0 && (
+        data.data.map((item: PostsDataModel) => (
           <RCard 
             key={`post-${item.id}`}
             style={[tw.mB4]}
@@ -40,21 +45,18 @@ export default function PostList ({ withAuthor, data }: Props) {
               {item.title}
             </Text>
 
-            {withAuthor && item.author ? (
+            {withAuthor && users && users.data.length !== 0 && (
               <Text>
                 Written by
-
                 <Text
                   style={[tw.textBlue700]}
                   onPress={() => navigation.navigate('post.author', {
                     userId: item.userId
                   })}
                 >
-                  {' ' + item.author.name}
+                  {' ' + handleUser(item.userId).name}
                 </Text>
               </Text>
-            ) : (
-              null
             )}
 
             <Text style={[tw.mT3]}>

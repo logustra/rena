@@ -3,12 +3,12 @@ import { tw } from 'react-native-tailwindcss'
 
 import { Props } from './rcontainer.typings'
 
-import {
-  StoresContext,
-  setRefreshing
-} from '@/stores'
+import { setRefreshing } from '@/stores/Common'
 
-import { wait } from '@/utils'
+import {
+  wait,
+  useCommonStore
+} from '@/utils'
 
 import {
   ScrollView,
@@ -20,7 +20,7 @@ export default function RContainer ({ children, style }: Props) {
   const { 
     commonState, 
     commonDispatch 
-  } = React.useContext<any>(StoresContext)
+  } = useCommonStore()
   
   function onRefresh () {
     setRefreshing(commonDispatch, true)

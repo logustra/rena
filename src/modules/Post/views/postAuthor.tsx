@@ -3,14 +3,19 @@ import { useRoute } from '@react-navigation/native'
 import { tw } from 'react-native-tailwindcss'
 
 import {
-  postAuthorInitState,
-  postAuthorMutations,
-  authorDetailRequest,
-  postAuthorRequest
-} from '../stores/PostAuthor'
-import { PostList } from '../components'
+  userInitState,
+  userMutations,
+  userRequest
+} from '../stores/User'
+import {
+  postsInitState,
+  postsMutations,
+  postsRequest
+} from '../stores/Posts'
 
-import { StoresContext } from '@/stores'
+import { useCommonStore } from '@/utils'
+
+import { PostList } from '../components'
 
 import { 
   Text,
@@ -19,6 +24,7 @@ import {
 
 import { 
   RDivider,
+  RError,
   RLoading 
 } from 'atoms'
 import { RCard } from 'molecules'
@@ -30,57 +36,57 @@ import {
 import { typography } from '@/styles'
 
 export default function PostAuthor () {
+  const { commonState } = useCommonStore()
+
   const { userId }: any = useRoute().params
-  const { commonState } = React.useContext<any>(StoresContext)
-  
   const [
-    postAuthorState, 
-    postAuthorDispatch
+    userState, 
+    userDispatch
   ] = React.useReducer(
-    postAuthorMutations, 
-    postAuthorInitState
+    userMutations, 
+    userInitState
   )
-  const { 
-    authorDetail, 
-    postAuthor 
-  } = postAuthorState
 
   React.useEffect(() => {
-    authorDetailRequest(postAuthorDispatch, userId)
+    if (userId) userRequest(userDispatch, userId)
   }, [userId])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      authorDetailRequest(postAuthorDispatch, userId)
-    }
-  }, [userId, commonState.isRefreshing])
+    if (commonState.isRefreshing) if (userId) userRequest(userDispatch, userId)
+  }, [commonState.isRefreshing, userId])
+
+  const [
+    postsState,
+    postsDispatch
+  ] = React.useReducer(
+    postsMutations,
+    postsInitState
+  )
 
   React.useEffect(() => {
-    postAuthorRequest(postAuthorDispatch)
-  }, [])
+    if (userId) postsRequest(postsDispatch, { userId })
+  }, [userId])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      postAuthorRequest(postAuthorDispatch)
-    }
-  }, [commonState.isRefreshing])
+    if (commonState.isRefreshing) if (userId) postsRequest(postsDispatch, { userId })
+  }, [commonState.isRefreshing, userId])
 
   return (
     <RLayout>
       <RContainer>
-        {authorDetail.isFetching ? (
-          <RLoading />
-        ) : (
+        {userState.isFetching && <RLoading />}
+        {userState.isError && <RError />}
+        {Object.keys(userState.data).length !== 0 && (
           <RCard>
             <Text style={[styles.authorTitle]}>
-              {authorDetail.data.name}
+              {userState.data.name}
             </Text>
 
             <RDivider />
 
             <Text>
-              Email: {authorDetail.data.email} {'\n'}
-              Website: {authorDetail.data.website}
+              Email: {userState.data.email} {'\n'}
+              Website: {userState.data.website}
             </Text>
           </RCard>
         )}
@@ -89,14 +95,10 @@ export default function PostAuthor () {
           Posted Article
         </Text>
 
-        {postAuthor.isFetching ? (
-          <RLoading />
-        ) : (
-          <PostList
-            withAuthor={false}
-            data={postAuthor}
-          />
-        )}
+        <PostList
+          withAuthor={false}
+          data={postsState}
+        />
       </RContainer>
     </RLayout>
   )

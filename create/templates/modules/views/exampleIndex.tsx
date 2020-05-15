@@ -2,12 +2,10 @@ import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 
 import { 
-  exampleIndexInitState,
-  exampleIndexMutations,
+  exampleInitState,
+  exampleMutations,
   exampleRequest
 } from '../stores'
-
-import { StoresContext } from '@/stores'
 
 import { 
   Text,
@@ -22,25 +20,17 @@ import {
 import { typography } from '@/styles'
 
 export default function ExampleIndex () {
-  const { commonState } = React.useContext<any>(StoresContext)
-
   const [
     exampleState, 
     exampleDispatch
   ] = React.useReducer(
-    exampleIndexMutations, 
-    exampleIndexInitState
+    exampleMutations, 
+    exampleInitState
   )
 
   React.useEffect(() => {
     exampleRequest(exampleDispatch)
   }, [])
-
-  React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      exampleRequest(exampleDispatch)
-    }
-  }, [commonState.isRefreshing])
 
   return (
     <RLayout>

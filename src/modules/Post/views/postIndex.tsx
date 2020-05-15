@@ -1,64 +1,69 @@
 import React from 'react'
 
 import {
-  postIndexInitState,
-  postIndexMutations,
-  authorListRequest,
-  postListRequest
-} from '../stores/PostIndex'
+  postsInitState,
+  postsMutations,
+  postsRequest
+} from '../stores/Posts'
+
+import {
+  usersInitState,
+  usersMutations,
+  usersRequest
+} from '@/stores/Users'
+
+import { useCommonStore } from '@/utils'
+
 import { PostList } from '../components'
 
-import { StoresContext } from '@/stores'
-
-import { RLoading } from 'atoms'
 import { 
   RContainer,
   RLayout
 } from 'templates'
 
 export default function PostIndex () {
-  const { commonState } = React.useContext<any>(StoresContext)
+  const { commonState } = useCommonStore()
 
   const [
-    postIndexState, 
-    postIndexDispatch
+    postsState, 
+    postsDispatch
   ] = React.useReducer(
-    postIndexMutations,
-    postIndexInitState
+    postsMutations,
+    postsInitState
   )
-  const { postList } = postIndexState
 
   React.useEffect(() => {
-    authorListRequest(postIndexDispatch)
+    postsRequest(postsDispatch)
   }, [])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      authorListRequest(postIndexDispatch)
-    }
+    if (commonState.isRefreshing) postsRequest(postsDispatch)
   }, [commonState.isRefreshing])
 
+  const [
+    usersState, 
+    usersDispatch
+  ] = React.useReducer(
+    usersMutations,
+    usersInitState
+  )
+
   React.useEffect(() => {
-    postListRequest(postIndexDispatch)
+    usersRequest(usersDispatch)
   }, [])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      postListRequest(postIndexDispatch)
-    }
+    if (commonState.isRefreshing) usersRequest(usersDispatch)
   }, [commonState.isRefreshing])
 
   return (
     <RLayout>
       <RContainer>
-        {postList.isFetching ? (
-          <RLoading />
-        ) : (
-          <PostList
-            withAuthor={true}
-            data={postList}
-          />
-        )}
+        <PostList
+          withAuthor={true}
+          users={usersState}
+          data={postsState}
+        />
       </RContainer>
     </RLayout>
   )

@@ -2,20 +2,26 @@ import React from 'react'
 import { useRoute, useNavigation } from '@react-navigation/native'
 import { tw } from 'react-native-tailwindcss'
 
-import { PostCommentModel } from '../typings/postDetailTypings'
 import {
-  postDetailInitState,
-  postDetailMutations,
-  postDetailRequest,
-  postCommentListRequest
-} from '../stores/PostDetail'
-import { 
-  postAuthorInitState, 
-  postAuthorMutations,
-  authorDetailRequest
-} from '../stores/PostAuthor'
+  postInitState,
+  postMutations,
+  postRequest
+} from '../stores/Post'
 
-import { StoresContext } from '@/stores'
+import { CommentsDataModel } from '../typings/commentsTypings'
+import {
+  commentsInitState,
+  commentsMutations,
+  commentsRequest
+} from '../stores/Comments'
+
+import { UsersDataModel } from '@/typings/usersTypings'
+import { usersRequest } from '@/stores/Users'
+
+import { 
+  useCommonStore,
+  useUsersStore
+} from '@/utils'
 
 import { 
   Text, 
@@ -23,7 +29,10 @@ import {
   StyleSheet
 } from 'react-native'
 
-import { RLoading } from 'atoms'
+import { 
+  RError,
+  RLoading 
+} from 'atoms'
 import { RCard } from 'molecules'
 import { 
   RContainer,
@@ -33,102 +42,100 @@ import {
 import { typography } from '@/styles'
 
 export default function PostDetail () {
-  const { postId }: any = useRoute().params
   const navigation = useNavigation()
-  const { commonState } = React.useContext<any>(StoresContext)
-  
-  const [
-    postDetailState, 
-    postDetailDispatch
-  ] = React.useReducer(
-    postDetailMutations, 
-    postDetailInitState
-  )
-  const { 
-    postDetail, 
-    postCommentList 
-  } = postDetailState
+  const { commonState } = useCommonStore()
 
-  const [
-    postAuthorState, 
-    postAuthorDispatch
-  ] = React.useReducer(
-    postAuthorMutations, 
-    postAuthorInitState
-  )
-  const { authorDetail } = postAuthorState
+  const {
+    usersState,
+    usersDispatch
+  } = useUsersStore()
+
+  function handleUser (userId: number) {
+    return usersState.data.find((item: UsersDataModel) => item.id === userId)
+  }
 
   React.useEffect(() => {
-    postDetailRequest(postDetailDispatch, postId)
+    usersRequest(usersDispatch)
+  }, [usersDispatch])
+
+  React.useEffect(() => {
+    if (commonState.isRefreshing) usersRequest(usersDispatch)
+  }, [usersDispatch, commonState.isRefreshing])
+
+  const { postId }: any = useRoute().params
+  const [
+    postState, 
+    postDispatch
+  ] = React.useReducer(
+    postMutations, 
+    postInitState
+  )
+
+  React.useEffect(() => {
+    if (postId) postRequest(postDispatch, postId)
   }, [postId])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      postDetailRequest(postDetailDispatch, postId)
-    }
-  }, [postId, commonState.isRefreshing])
+    if (commonState.isRefreshing) if (postId) postRequest(postDispatch, postId)
+  }, [commonState.isRefreshing, postId])
+
+  const [
+    commentsState, 
+    commentsDispatch
+  ] = React.useReducer(
+    commentsMutations, 
+    commentsInitState
+  )
 
   React.useEffect(() => {
-    authorDetailRequest(postAuthorDispatch, postDetail.data.userId)
-  }, [postDetail.data.userId])
+    if (postId) commentsRequest(commentsDispatch, { postId })
+  }, [postId])
 
   React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      authorDetailRequest(postAuthorDispatch, postDetail.data.userId)
-    }
-  }, [postDetail.data.userId, commonState.isRefreshing])
-
-  React.useEffect(() => {
-    postCommentListRequest(postDetailDispatch)
-  }, [])
-
-  React.useEffect(() => {
-    if (commonState.isRefreshing) {
-      postCommentListRequest(postDetailDispatch)
-    }
-  }, [commonState.isRefreshing])
+    if (commonState.isRefreshing) if (postId) commentsRequest(commentsDispatch, { postId })
+  }, [commonState.isRefreshing, postId])
 
   return (
     <RLayout>
       <RContainer>
-        {postDetail.isFetching ? (
-          <RLoading />
-        ) : (
+        {postState.isFetching && <RLoading />} 
+        {postState.isError && <RError />} 
+        {Object.keys(postState.data).length !== 0 && (
           <RCard>
             <Text style={[styles.postTitle]}>
-              {postDetail.data.title}
+              {postState.data.title}
             </Text>
 
-            <Text>
-              Written by
-              
-              <Text
-                style={[tw.textBlue700]}
-                onPress={() => navigation.navigate('post.author', {
-                  userId: postDetail.data.userId,
-                  title: authorDetail.data.name
-                })}
-              >
-                {' ' + authorDetail.data.name}
+            {postState.data.userId && usersState.data.length !== 0 && (
+              <Text>
+                Written by
+                <Text
+                  style={[tw.textBlue700]}
+                  onPress={() => navigation.navigate('post.author', {
+                    userId: postState.data.userId
+                  })}
+                >
+                  {' ' + handleUser(postState.data.userId).name}
+                </Text>
               </Text>
-            </Text>
+            )}
 
             <Text style={[tw.mT3]}>
-              {postDetail.data.body}
+              {postState.data.body}
             </Text>
           </RCard>
-        )}
+        )} 
 
         <View>
-          <Text style={[styles.commentTitle]}>
+          <Text style={[styles.commentsTitle]}>
             Comments
           </Text>
 
-          {postCommentList.isFetching ? (
-            <RLoading />
-          ) : (
-            postCommentList.data.map((item: PostCommentModel) => (
-              <RCard 
+          {commentsState.isFetching && <RLoading />}
+          {commentsState.isError && <RError />}
+          {commentsState.data.length !== 0 && (
+            commentsState.data.map((item: CommentsDataModel) => (
+              <RCard
                 key={`comment-${item.id}`}
                 style={[tw.mB4]}
               >
@@ -159,7 +166,7 @@ const styles = StyleSheet.create({
     ...tw.textBase
   },
 
-  commentTitle: {
+  commentsTitle: {
     fontFamily: typography.lato.bold,
     ...tw.textBase,
     ...tw.mY4
