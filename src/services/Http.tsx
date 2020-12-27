@@ -3,38 +3,32 @@ import axios, { AxiosInstance } from 'axios'
 export default class Http {
   protected axios: AxiosInstance
 
+  /**
+   * @param  {object} axiosConfig
+   */
   public constructor (axiosConfig: object) {
     this.axios = axios.create(axiosConfig)
   }
 
   /**
-   * Perform GET request.
-   *
    * @param  {string} url
-   * @param  {object} params
-   * @param  {string} responseType
+   * @param  {object} params?
+   * @param  {object} config?
    */
-  public get (url: string, params?: {}, responseType?: string) {
+  public get (url: string, params?: object, config?: object) {
     try {
-      const config: any = {
+      return this.axios.request({
         method: 'get',
         url,
-        params
-      }
-
-      if (responseType) {
-        config.responseType = responseType
-      }
-
-      return this.axios.request(config)
+        params,
+        ...config
+      })
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
   /**
-   * Perform POST request.
-   *
    * @param  {string} url
    * @param  {object} data
    */
@@ -46,13 +40,11 @@ export default class Http {
         data
       })
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
   /**
-   * Perform PUT request.
-   *
    * @param  {string} url
    * @param  {object} data
    */
@@ -64,13 +56,11 @@ export default class Http {
         data
       })
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
   /**
-   * Perform PATCH request.
-   *
    * @param  {string} url
    * @param  {object} data
    */
@@ -82,13 +72,11 @@ export default class Http {
         data
       })
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 
   /**
-   * Perform DELETE request.
-   *
    * @param  {string} url
    */
   public delete (url: string) {
@@ -98,7 +86,7 @@ export default class Http {
         url
       })
     } catch (error) {
-      throw new Error(error)
+      throw error
     }
   }
 }
