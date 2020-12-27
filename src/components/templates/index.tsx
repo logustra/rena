@@ -1,7 +1,7 @@
 import RContainer from './RContainer/rcontainer'
 import RLayout from './RLayout/rlayout'
 
-export { 
+export {
   RContainer,
-  RLayout 
+  RLayout
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { tw } from 'react-native-tailwindcss'
 
-import { 
+import {
   View,
   StyleSheet
 } from 'react-native'

@@ -1,11 +1,11 @@
 import { wait } from './promises'
-import { 
+import {
   useCommonStore,
   useUsersStore,
-  useStorage 
+  useStorage
 } from './hooks'
 
-export { 
+export {
   wait,
   useCommonStore,
   useUsersStore,

@@ -5,15 +5,15 @@ import { tw } from 'react-native-tailwindcss'
 import { Props } from './postList.typings'
 import { PostsDataModel } from '../../typings/postsTypings'
 
-import { 
-  View, 
+import {
+  View,
   Text,
   StyleSheet
 } from 'react-native'
 
-import { 
+import {
   RError,
-  RLoading 
+  RLoading
 } from 'atoms'
 import { RCard } from 'molecules'
 
@@ -25,14 +25,14 @@ export default function PostList ({ withAuthor, users, data }: Props) {
   function handleUser (userId: number): any {
     if (users) return users.data.find(item => item.id === userId)
   }
-  
+
   return (
     <View>
       {data.isFetching && <RLoading />}
       {data.isError && <RError />}
       {data.data.length !== 0 && (
         data.data.map((item: PostsDataModel) => (
-          <RCard 
+          <RCard
             key={`post-${item.id}`}
             style={[tw.mB4]}
           >

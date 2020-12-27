@@ -1,7 +1,7 @@
 import logger from 'use-reducer-logger'
 
 import * as types from './commonTypes'
-import { 
+import {
   CommonState,
   CommonAction
 } from '@/typings/commonTypings'

@@ -18,25 +18,25 @@ import {
 import { UsersDataModel } from '@/typings/usersTypings'
 import { usersRequest } from '@/stores/Users'
 
-import { 
+import {
   useCommonStore,
   useUsersStore
 } from '@/utils'
 
-import { 
-  Text, 
+import {
+  Text,
   View,
   StyleSheet
 } from 'react-native'
 
-import { 
+import {
   RError,
-  RLoading 
+  RLoading
 } from 'atoms'
 import { RCard } from 'molecules'
-import { 
+import {
   RContainer,
-  RLayout 
+  RLayout
 } from 'templates'
 
 import { typography } from '@/styles'
@@ -64,10 +64,10 @@ export default function PostDetail () {
 
   const { postId }: any = useRoute().params
   const [
-    postState, 
+    postState,
     postDispatch
   ] = React.useReducer(
-    postMutations, 
+    postMutations,
     postInitState
   )
 
@@ -80,10 +80,10 @@ export default function PostDetail () {
   }, [commonState.isRefreshing, postId])
 
   const [
-    commentsState, 
+    commentsState,
     commentsDispatch
   ] = React.useReducer(
-    commentsMutations, 
+    commentsMutations,
     commentsInitState
   )
 
@@ -98,8 +98,8 @@ export default function PostDetail () {
   return (
     <RLayout>
       <RContainer>
-        {postState.isFetching && <RLoading />} 
-        {postState.isError && <RError />} 
+        {postState.isFetching && <RLoading />}
+        {postState.isError && <RError />}
         {Object.keys(postState.data).length !== 0 && (
           <RCard>
             <Text style={[styles.postTitle]}>
@@ -124,7 +124,7 @@ export default function PostDetail () {
               {postState.data.body}
             </Text>
           </RCard>
-        )} 
+        )}
 
         <View>
           <Text style={[styles.commentsTitle]}>

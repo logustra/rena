@@ -16,7 +16,7 @@ import { useCommonStore } from '@/utils'
 
 import { PostList } from '../components'
 
-import { 
+import {
   RContainer,
   RLayout
 } from 'templates'
@@ -25,7 +25,7 @@ export default function PostIndex () {
   const { commonState } = useCommonStore()
 
   const [
-    postsState, 
+    postsState,
     postsDispatch
   ] = React.useReducer(
     postsMutations,
@@ -41,7 +41,7 @@ export default function PostIndex () {
   }, [commonState.isRefreshing])
 
   const [
-    usersState, 
+    usersState,
     usersDispatch
   ] = React.useReducer(
     usersMutations,

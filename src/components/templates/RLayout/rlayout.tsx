@@ -8,7 +8,7 @@ import { setOffline } from '@/stores/Common'
 
 import { useCommonStore } from '@/utils'
 
-import { 
+import {
   SafeAreaView,
   View,
   Text,
@@ -18,9 +18,9 @@ import {
 export default function RLayout ({ children, style }: Props) {
   const netInfo = useNetInfo()
 
-  const { 
-    commonState, 
-    commonDispatch 
+  const {
+    commonState,
+    commonDispatch
   } = useCommonStore()
 
   React.useEffect(() => {

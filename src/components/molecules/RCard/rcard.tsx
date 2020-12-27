@@ -3,7 +3,7 @@ import { tw } from 'react-native-tailwindcss'
 
 import { Props } from './rcard.typings'
 
-import { 
+import {
   View,
   StyleSheet
 } from 'react-native'

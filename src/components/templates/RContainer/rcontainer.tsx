@@ -17,11 +17,11 @@ import {
 } from 'react-native'
 
 export default function RContainer ({ children, style }: Props) {
-  const { 
-    commonState, 
-    commonDispatch 
+  const {
+    commonState,
+    commonDispatch
   } = useCommonStore()
-  
+
   function onRefresh () {
     setRefreshing(commonDispatch, true)
 

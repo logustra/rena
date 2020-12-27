@@ -17,20 +17,20 @@ import { useCommonStore } from '@/utils'
 
 import { PostList } from '../components'
 
-import { 
+import {
   Text,
   StyleSheet
 } from 'react-native'
 
-import { 
+import {
   RDivider,
   RError,
-  RLoading 
+  RLoading
 } from 'atoms'
 import { RCard } from 'molecules'
-import { 
+import {
   RContainer,
-  RLayout 
+  RLayout
 } from 'templates'
 
 import { typography } from '@/styles'
@@ -40,10 +40,10 @@ export default function PostAuthor () {
 
   const { userId }: any = useRoute().params
   const [
-    userState, 
+    userState,
     userDispatch
   ] = React.useReducer(
-    userMutations, 
+    userMutations,
     userInitState
   )
 
