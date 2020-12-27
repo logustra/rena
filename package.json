@@ -91,6 +91,6 @@
     "stylelint": "^13.2.1",
     "stylelint-react-native": "^2.2.0",
     "typescript": "^3.8.2",
-    "use-reducer-logger": "^1.0.1"
+    "use-reducer-logger": "^1.0.2"
   }
 }
