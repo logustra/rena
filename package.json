@@ -20,8 +20,10 @@
   "author": "Faizal Andyka Putra",
   "license": "MIT",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android:dev": "cp env/env.development .env && react-native run-android",
+    "android:prod": "cp env/env.production .env && react-native run-android",
+    "ios:dev": "cp env/env.development .env && react-native run-ios",
+    "ios:prod": "cp env/env.production .env && react-native run-ios",
     "start": "react-native start",
     "link": "react-native link",
     "stylelint": "stylelint --config stylelint.config.js 'src/**/*.tsx'",

@@ -54,16 +54,13 @@ $ cd rena
 
 # instal dependencies
 $ yarn install
-
-# copy file .env.example to .env
-$ cp .env.example .env
 ```
 
 ### Android
 
 ```bash
-# build android and open emulator
-$ yarn android
+# build android with .env production and open emulator
+$ yarn android:prod
 ```
 
 ### IOS
@@ -78,8 +75,8 @@ $ pod install
 # back to previous folder
 $ cd ..
 
-# build ios and open emulator
-$ yarn ios
+# build ios with .env production and open emulator
+$ yarn ios:prod
 ```
 
 ## How to Rename
