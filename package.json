@@ -1,7 +1,7 @@
 {
   "name": "rena",
   "version": "1.0.0",
-  "description": "A highly scalable react native boilerplate",
+  "description": "A highly scalable react native boilerplate using metro",
   "keywords": [
     "react-native",
     "typescript",
@@ -17,7 +17,7 @@
     "url": "https://github.com/logustra/rena"
   },
   "bugs": "https://github.com/logustra/rena/issues",
-  "author": "Faizal Andyka Putra",
+  "author": "Faizal Andyka",
   "license": "MIT",
   "scripts": {
     "android:dev": "cp env/env.development .env && react-native run-android",
