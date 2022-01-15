@@ -87,7 +87,7 @@
     "react-native-tailwindcss": "^1.1.9",
     "react-test-renderer": "16.9.0",
     "reactotron-react-native": "^4.0.3",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "stylelint": "^13.2.1",
     "stylelint-react-native": "^2.2.0",
     "typescript": "^3.8.2",
